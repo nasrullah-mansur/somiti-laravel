@@ -15,7 +15,7 @@ class CreateLoansTable extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->string('policy_id');
+            $table->string('holder_id');
             $table->integer('day');
             $table->integer('month');
             $table->integer('year');

@@ -1,0 +1,44 @@
+.add-money {
+    .profile {
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        h1 {
+            padding-top: 10px;
+        }
+
+        .summery {
+            display: flex;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+            
+            > div {
+                width: 50%;
+                padding: 15px;
+
+                &:first-child {
+                    border-right: 1px solid #ddd;
+                }
+            }
+
+            h4 {
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+    .form {
+        h2 {
+            margin-top: 20px;
+            font-size: 24px;
+
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+}

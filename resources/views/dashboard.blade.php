@@ -1,17 +1,35 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.front')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+
+@section('content')
+<section class="categories">
+    <div class="container">
+        <div class="items">
+            <a href="{{ route('collection.date') }}">
+                <div class="item">
+                    <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
+                    <h4>কালেকশন</h4>
                 </div>
-            </div>
+            </a>
+            <a href="#">
+                <div class="item">
+                    <img src="{{ asset('front/images/icon-2.png') }}" alt="img">
+                    <h4>হিসাব অনুসন্ধান</h4>
+                </div>
+            </a>
+            <a href="#">
+                <div class="item">
+                    <img src="{{ asset('front/images/icon-3.png') }}" alt="img">
+                    <h4>নগদ প্রদান</h4>
+                </div>
+            </a>
+            <a href="{{ route('holder.type') }}">
+                <div class="item">
+                    <img src="{{ asset('front/images/icon-4.png') }}" alt="img">
+                    <h4>সদস্যগণ</h4>
+                </div>
+            </a>
         </div>
     </div>
-</x-app-layout>
+</section>
+@endsection

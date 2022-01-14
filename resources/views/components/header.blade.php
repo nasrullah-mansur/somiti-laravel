@@ -2,10 +2,10 @@
     <div class="container">
         <div class="content">
             <div class="title">
-                <p>প্রগতি ক্ষুদ্র ব্যবসায়ী সমবায় সমিতি লিঃ</p>
+                <p class="m-0"><a href="{{ route('dashboard') }}">প্রগতি ক্ষুদ্র ব্যবসায়ী সমবায় সমিতি লিঃ</a></p>
             </div>
             <div class="mobile">
-                <img src="assets/images/menu.png" alt="menu-icon">
+                <img src="{{ asset('front/images/menu.png') }}" alt="menu-icon">
             </div>
             <nav class="list">
                 <div class="container">

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/select-2.css">
+    <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    
+    <!-- Header start -->
+    <header class="header">
+        <div class="container">
+            <div class="content">
+                <div class="title">
+                    <p>প্রগতি ক্ষুদ্র ব্যবসায়ী সমবায় সমিতি লিঃ</p>
+                </div>
+                <div class="mobile">
+                    <img src="assets/images/menu.png" alt="menu-icon">
+                </div>
+                <nav class="list">
+                    <div class="container">
+                        <ul>
+                            <li><a href="#">হোম</a></li>
+                            <li><a href="#">আমাদের সম্পর্কে</a></li>
+                            <li><a href="#">কালেকশন</a></li>
+                            <li><a href="#">হিসাব অনুসন্ধান</a></li>
+                            <li><a href="#">নগদ প্রদান</a></li>
+                            <li><a href="#">সদস্যগণ</a></li>
+                            <li><a href="#">এক নজরে</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- Header end -->
+
+    <!-- add user start -->
+    <section class="center">
+        <div class="container">
+            <h1>নতুন সদস্য যুক্ত করুন</h1>
+            <form >
+                <div class="input-area">
+                    <label for="full_name">সদস্যের পুরো নাম</label>
+                    <input id="full_name" type="text" placeholder="সদস্যের পুরো নাম">
+                    <small>এই ঘরটি অবশ্যই পুরণ করুন</small>
+                </div>
+                <div class="input-area">
+                    <label for="address">সদস্যের ঠিকানা</label>
+                    <textarea name="address" id="address" placeholder="সদস্যের ঠিকানা"></textarea>
+                </div>
+                <div class="input-area">
+                    <label for="text">সদস্যের পলিসি নং</label>
+                    <input id="text" type="text" placeholder="সদস্যের পলিসি নং">
+                    <small>এই পলিসি নম্বরটি ফাঁকা নেই</small>
+                </div>
+                <div class="input-area">
+                    <label for="mobile">সদস্যের মোবাইল নং</label>
+                    <input id="mobile" type="text" placeholder="সদস্যের মোবাইল নং">
+                </div>
+                <div class="input-area">
+                    <label for="balance">সদস্যের বর্তমান ব্যালেন্স</label>
+                    <input id="balance" type="number" placeholder="সদস্যের বর্তমান ব্যালেন্স">
+                </div>
+                <div class="join-date">
+                    <h5 class="text-start">ভর্তির তারিখ</h5>
+                    <div class="selections d-flex">
+                        <div class="input-area w-100 me-2">
+                            <label for="day">তারিখ</label>
+                            <select id="day" class="custom-select bn">
+                                <script>
+                                    let todayDate = (new Date()).getDate();
+                                    function dayFn(value) {
+                                        if(value === todayDate) {
+                                            return `<option selected value="${value}">${value}</option>`;
+                                        } else {
+                                            return `<option value="${value}">${value}</option>`;
+                                        }
+                                    }
+                                    for(let dayI = 1; dayI <= 31; dayI++) {
+                                        document.write( dayFn(dayI) )
+                                    }
+                                </script>
+                            </select>
+                        </div>
+        
+                        <div class="input-area w-100 me-2">
+                            <label for="month">মাস</label>
+                            <select id="month" class="custom-select bn">
+        
+                                <script>
+                                    let months = [
+                                        'জানুয়ারী',
+                                        'ফেব্রুয়ারী',
+                                        'মার্চ',
+                                        'এপ্রিল',
+                                        'মে',
+                                        'জুন',
+                                        'জুলাই',
+                                        'আগস্ট',
+                                        'সেপ্টেম্বর',
+                                        'অক্টবর',
+                                        'নভেম্বর',
+                                        'ডিসেম্বর',
+                                    ]
+                                    let thisMonth = (new Date()).getMonth();
+                                    function monthFn(value) {
+                                        if(value === (thisMonth + 1)) {
+                                            return `<option selected value="${value}">${months[value - 1]}</option>`;
+                                        } else {
+                                            return `<option value="${value}">${months[value - 1]}</option>`;
+                                        }
+                                    }
+        
+                                    for(let monthI = 1; monthI <=12; monthI++) {
+                                        document.write( monthFn(monthI) );
+                                    }
+                                </script>
+        
+                            </select>
+                        </div>
+        
+                        <div class="input-area w-100">
+                            <label for="year">বছর</label>
+                            <select id="year" class="custom-select bn">
+                                
+                                <script>
+                                    let thisYear = (new Date()).getFullYear();
+                                    function thisYearFun(value) {
+                                        if(value === thisYear) {
+                                            return `<option selected value="${value}">${value}</option>`;
+                                        } else {
+                                            return `<option value="${value}">${value}</option>`;
+                                        }
+                                    }
+                                    for(let yearI = (thisYear - 20); yearI <= thisYear; yearI++) {
+                                        document.write(thisYearFun(yearI))
+                                    }
+                                </script>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="image-upload">
+                    <div class="img">
+                        <img id="output" src="assets/images/profile.jpg" alt="img">
+                    </div>
+                    <div class="content">
+                        <label for="image">সদস্যের ছবি যুক্ত করুন</label>
+                        <input accept="image/*" type="file" id="image">
+                    </div>
+                </div>
+                <div class="btn-area text-start">
+                    <button data-bs-toggle="modal" data-bs-target="#add-user-status" class="btn-primary btn" type="button">সদস্য যুক্ত করুন</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- add user end -->
+
+    <!-- Footer start -->
+    <footer class="footer">
+        <p>&copy; সর্বসত্ব সংরক্ষিত | প্রগতি ক্ষুদ্র ব্যবসায়ী সমবায় সমিতি লিঃ</p>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Modal -->
+  <div class="modal fade" id="add-user-status" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+          <div class="text-center">
+              <h3>একজন নতুন
+                সদস্য যোগ 
+                হয়েছে</h3>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="text-center">
+                <a href="#" class="btn btn-primary">ঠিক আছে</a>
+
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.2.2.4.min.js"></script>
+    <script src="assets/js/select-2.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.custom-select').select2();
+        });
+    </script>
+</body>
+</html>

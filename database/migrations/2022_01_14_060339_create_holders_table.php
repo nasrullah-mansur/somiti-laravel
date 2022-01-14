@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePolicyHoldersTable extends Migration
+class CreateHoldersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreatePolicyHoldersTable extends Migration
      */
     public function up()
     {
-        Schema::create('policy_holders', function (Blueprint $table) {
+        Schema::create('holders', function (Blueprint $table) {
             $table->id();
             $table->string('policy');
             $table->string('name');
             $table->string('joining_date');
             $table->string('address');
-            $table->string('photo');
-            $table->string('phone');
-            $table->string('balance');
+            $table->string('photo')->nullable();
+            $table->string('balance')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreatePolicyHoldersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('policy_holders');
+        Schema::dropIfExists('holders');
     }
 }

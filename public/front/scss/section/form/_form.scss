@@ -1,0 +1,101 @@
+.input-area {
+    margin-bottom: 15px;
+    position: relative;
+
+    i {
+        position: absolute;
+        right: 10px;
+        bottom: 14px;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    small {
+        font-size: 12px;
+        display: block;
+        text-align: left;
+        color: $secondary-color;
+    }
+
+    label {
+        display: block;
+        font-size: 14px;
+        text-align-last: left;
+        padding-left: 3px;
+    }
+
+    input,
+    textarea {
+        display: block;
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid #ddd;
+        padding: 0 10px;
+        height: 45px;
+
+        &::placeholder {
+            color: rgba($color: $black, $alpha: 0.3);
+        }
+
+        &:focus {
+            border-color: $primary-color;
+        }
+    }
+
+    select {
+        width: 100%;
+        text-align: left;
+    }
+
+    textarea {
+        height: 120px;
+    }
+}
+
+.image-upload {
+    margin-bottom: 15px;
+
+    input {
+        display: none;
+    }
+
+    label {
+        display: block;
+        font-size: 14px;
+        padding: 0 10px;
+        height: 45px;
+        line-height: 45px;
+        text-align-last: left;
+        background-color: #eee;
+        cursor: pointer;
+    }
+
+    .img {
+        margin-bottom: 15px;
+        text-align: left;
+
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+        }
+    }
+}
+
+.select2-container--default .select2-selection--single {
+    border-radius: 0;
+    height: 45px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 45px;
+    text-align: left;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 8px;
+    right: 6px;
+}

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMoleysTable extends Migration
+class CreateMoneyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateMoleysTable extends Migration
      */
     public function up()
     {
-        Schema::create('moleys', function (Blueprint $table) {
+        Schema::create('money', function (Blueprint $table) {
             $table->id();
-            $table->string('policy_id');
+            $table->string('holder_id');
             $table->integer('day');
             $table->integer('month');
             $table->integer('year');
@@ -31,6 +31,6 @@ class CreateMoleysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('moleys');
+        Schema::dropIfExists('money');
     }
 }
