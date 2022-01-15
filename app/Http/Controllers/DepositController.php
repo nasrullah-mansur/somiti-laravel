@@ -10,27 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class DepositController extends Controller
 {
-    public function deposit_date()
-    {
-        return view('front.deposit.date');
-    }
-
-    public function deposit_date_check(Request $request)
-    {
-        $request->validate([
-            'day' => 'required',
-            'month' => 'required',
-            'year' => 'required',
-        ]);
-
-        session([
-            'today_day' => $request->day,
-            'today_month' => ($request->month) - 1,
-            'today_year' => $request->year,
-        ]);
-
-        return redirect()->route('deposit.policy.select');
-    }
+   
 
     public function policy_select()
     {

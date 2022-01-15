@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Holder;
+use App\Models\Withdraw;
 use Illuminate\Http\Request;
 
 class WithdrawController extends Controller
@@ -33,6 +34,34 @@ class WithdrawController extends Controller
 
     public function store(Request $request, $id)
     {
-        # code...
+        $request->validate([
+            'number' => 'required|integer',
+            're_number' => 'required|same:number',
+            'day' => 'required',
+            'month' => 'required',
+            'year' => 'required'
+        ]);
+        // return $request;
+        $holder = Holder::where('id', $id)->firstOrFail();
+        $withdraw = new Withdraw();
+
+        $withdraw->holder_id = $holder->id;
+        $withdraw->day = $request->day;
+        $withdraw->month = $request->month;
+        $withdraw->year = $request->year;
+        $withdraw->amount = $request->number;
+
+        if($holder->balance >= $request->number) {
+            $withdraw->save();
+        } else {
+            return redirect()->back()->withErrors('you are not eligible for loan');
+        }
+
+
+        $holder->balance = ($holder->balance) - $request->number;
+        $holder->save();
+
+        return redirect()->route('withdraw.check.ability', $id);
+        
     }
 }

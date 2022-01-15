@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deposit;
 use App\Models\Holder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -134,6 +135,11 @@ class HolderController extends Controller
         $holder = Holder::where('id', $id)->firstOrFail();
         removeImage($holder->photo);
         $holder->delete();
+
+        $deposits = Deposit::where('holder_id', $holder->id)->get();
+        foreach ($deposits as $deposit) {
+            $deposit->delete();
+        }
 
         return redirect()->route('holder.index');
     }

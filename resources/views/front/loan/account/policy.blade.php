@@ -1,11 +1,10 @@
 @extends('layouts.front')
 
 @section('content')
-
 <section class="center">
     <div class="container">
         <div class="today py-2 px-5 mb-3 border d-inline-block">
-            <h2>নগদ কালেকশনের তারিখ</h2>
+            <h2>ঋণ প্রদানের তারিখ</h2>
             <script>
                 let months = [
                         'জানুয়ারী',
@@ -30,7 +29,7 @@
         </div>
 
         <h4 class="text-start">পলিসি নং</h4>
-        <form method="POST" action="{{ route('deposit.policy.select.get') }}">
+        <form method="POST" action="{{ route('loan.select.policy.store') }}">
             @csrf
             <div class="input-area">
                 <select id="day" name="policy" class="custom-select">

@@ -4,10 +4,10 @@
 <section class="center add-money">
     <div class="container">
         <div class="profile">
-            <img src="{{ asset($holder->photo ? $holder->photo : 'front/images/profile.jpg') }} " alt="img">
+            <img src="{{ asset($holder->photo ? $holder->photo : 'front/images/profile.jpg') }}" alt="img">
             <div class="title">
                 <h1 class="m-0">{{ $holder->name }} <span>( {{ $holder->policy }} )</span></h1>
-                <small>ভর্তির তারিখ - <span class="bn-text"> {{ \Carbon\Carbon::parse($holder->joining_date)->format('F j, Y') }} </span></small>
+                <small>ভর্তির তারিখ - <span class="bn-text">12-12-2020</span></small>
             </div>
         </div>
         <div class="user-address">
@@ -24,13 +24,19 @@
                   </tr>
                   <tr>
                     <td>ব্যলেন্স</td>
-                    <td>
-                      @if ($holder->balance < MIN_VALUE_FOR_WITHDRAW)
-                      <span class="text-danger">{{ $holder->balance }} ( টাকা তোলার জন্য পর্যাপ্ত ব্যালেন্স নাই )</span>
-                      @else
-                      <span>{{ $holder->balance }}</span>
-                      @endif
-                    </td>
+                    <td>{{ $holder->balance }}</td>
+                  </tr>
+                  <tr>
+                    <td>একটিভ ঋণ</td>
+                    <td>{{ $holder->loan->amount }}</td>
+                  </tr>
+                  <tr>
+                    <td>ঋণ বাকি</td>
+                    <td>{{ $holder->loan->due }}</td>
+                  </tr>
+                  <tr>
+                    <td>দৈনিক আদায়</td>
+                    <td>{{ $holder->loan->daily_pay }}</td>
                   </tr>
                   
                 </tbody>
@@ -64,9 +70,7 @@
                 </tbody>
               </table>
         </div>
-        @if ($holder->balance >= MIN_VALUE_FOR_WITHDRAW)
-        <a href="{{ route('withdraw.create', $holder->id) }}" class="btn btn-primary">নগদ প্রদান করুন</a>
-        @endif
+        <a href="{{ route('loan.give', $holder->id) }}" class="btn btn-primary">ঋণের পরিমাণ যোগ করুন</a>
     </div>
 </section>
 @endsection

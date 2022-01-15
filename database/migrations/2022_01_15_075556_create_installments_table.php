@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLoansTable extends Migration
+class CreateInstallmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateLoansTable extends Migration
      */
     public function up()
     {
-        Schema::create('loans', function (Blueprint $table) {
+        Schema::create('installments', function (Blueprint $table) {
             $table->id();
             $table->integer('holder_id');
-            $table->integer('daily_pay');
-            $table->integer('day')->nullable();
-            $table->integer('month')->nullable();
-            $table->integer('year')->nullable();
-            $table->integer('amount')->nullable();
-            $table->integer('due')->nullable();
+            $table->integer('day');
+            $table->integer('month');
+            $table->integer('year');
+            $table->integer('amount');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ class CreateLoansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loans');
+        Schema::dropIfExists('installments');
     }
 }

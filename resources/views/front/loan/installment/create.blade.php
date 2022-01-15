@@ -1,0 +1,69 @@
+@extends('layouts.front')
+
+@section('content')
+<section class="center add-money">
+    <div class="container">
+        <div class="profile">
+            <img src="{{ asset($holder->photo ? $holder->photo : 'front/images/profile.jpg') }}" alt="img">
+            <div class="title">
+                <h1 class="m-0">{{ $holder->name }}</h1>
+                <small>ভর্তির তারিখ - <span class="bn-text">{{ \Carbon\Carbon::parse($holder->joining_date)->format('F j, Y') }}</span></small>
+            </div>
+            <div class="summery flex-wrap">
+                <div class="w-50 border-bottom">
+                    <h4>{{ $holder->policy }}</h4>
+                    <small>পলিসি নং</small>
+                </div>
+                <div class="w-50 border-bottom">
+                    <h4 class="bn-text {{ $holder->balance > 0 ? 'text-primary' : 'text-danger' }} text-primary">{{ $holder->balance }}</h4>
+                    <small>ব্যালেন্স</small>
+                </div>
+                <div class="w-50 border-end">
+                    <h4 class="bn-text">{{ $holder->loan->amount }}</h4>
+                    <small>একটিভ ব্যালেন্স</small>
+                </div>
+                <div class="w-50">
+                    <h4 class="bn-text">{{ $holder->loan->due }}</h4>
+                    <small>ঋণ বাকি</small>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+
+            <script>
+                let today_months = [
+                            'জানুয়ারী',
+                            'ফেব্রুয়ারী',
+                            'মার্চ',
+                            'এপ্রিল',
+                            'মে',
+                            'জুন',
+                            'জুলাই',
+                            'আগস্ট',
+                            'সেপ্টেম্বর',
+                            'অক্টবর',
+                            'নভেম্বর',
+                            'ডিসেম্বর',
+                        ]
+            </script>
+            
+            <h2 class="text-start">কিস্তি জমা ‍<span class="bn-text">- {{ Session::get('today_day') }} <script>document.write(today_months[{{ Session::get('today_month') }}])</script> {{ Session::get('today_year') }}</span></h2>
+            <form method="POST" action="">
+                @csrf
+                <div class="input-area">
+                    <input name="number" id="name" type="number" placeholder="টাকার পরিমাণ" value="{{ $holder->loan->daily_pay }}">
+                    @if($errors->any())
+                    <small>টাকার পরিমাণ সঠিক ভাবে দিন</small>
+                    @endif
+                </div>
+                <div class="input-area">
+                    <input name="con_number" type="number" placeholder="পুনরায় টাকার পরিমাণ" value="{{ $holder->loan->daily_pay }}">
+                </div>
+                <div class="btn-area text-start">
+                    <button class="btn-primary btn" type="submit">কিস্তি জমা করুন</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+@endsection

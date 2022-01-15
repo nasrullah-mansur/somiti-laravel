@@ -3,6 +3,12 @@
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
+
+// Helper variable;
+const MIN_VALUE_FOR_WITHDRAW = 100;
+const DEFAULT_BLANK_DATA = 'প্রযজ্য নয়';
+
+
 // ================ Image Upload =========================== //
 function ImageUpload($new_file, $path, $old_image) {
     if (!file_exists(public_path($path))) {

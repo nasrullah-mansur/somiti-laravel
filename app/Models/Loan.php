@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Loan extends Model
 {
     use HasFactory;
+
+
+    public function holder()
+    {
+        return $this->belongsTo(Holder::class);
+    }
 }

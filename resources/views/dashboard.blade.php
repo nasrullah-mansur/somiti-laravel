@@ -8,13 +8,13 @@
             <h2>নগদ গ্রহণ</h2>
         </div>
         <div class="items">
-            <a href="{{ route('deposit.date') }}">
+            <a href="{{ route('date.select', 'deposit') }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>নগদ কালেকশন</h4>
                 </div>
             </a>
-            <a href="#">
+            <a href="{{ route('date.select', 'installment') }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>ঋণ কালেকশন</h4>
@@ -29,13 +29,13 @@
             <h2>নগদ প্রদান</h2>
         </div>
         <div class="items">
-            <a href="{{ route('withdraw.select.policy') }}">
+            <a href="{{ route('date.select', 'withdraw') }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-3.png') }}" alt="img">
                     <h4>নগদ প্রদান</h4>
                 </div>
             </a>
-            <a href="#">
+            <a href="{{ route('date.select', 'loan') }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-4.png') }}" alt="img">
                     <h4>ঋণ প্রদান</h4>
@@ -49,7 +49,7 @@
             <h2>হিসাব অনুসন্ধান</h2>
         </div>
         <div class="items">
-            <a href="{{ route('deposit.date') }}">
+            <a href="#">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>নগদ জমা অনুসন্ধান</h4>
@@ -58,9 +58,22 @@
             <a href="#">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
-                    <h4>ঋণ ব্যালেন্স অনুসন্ধান</h4>
+                    <h4>নগদ উত্তলন অনুসন্ধান</h4>
                 </div>
             </a>
+            <a href="#">
+                <div class="item">
+                    <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
+                    <h4>ঋণ প্রদান অনুসন্ধান</h4>
+                </div>
+            </a>
+            <a href="#">
+                <div class="item">
+                    <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
+                    <h4>ঋণ উত্তলন অনুসন্ধান</h4>
+                </div>
+            </a>
+            
         </div>
     </div>
 
@@ -87,7 +100,7 @@
                     <h4>নতুন সদস্য গ্রহণ</h4>
                 </div>
             </a>
-            <a href="#">
+            <a href="{{ route('loan.account.create') }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-3.png') }}" alt="img">
                     <h4>ঋণ একাউন্ট তৈরী</h4>

@@ -4,7 +4,7 @@
 <section class="login">
     <div class="container">
         <h1>দিন নির্বাচন করুন</h1>
-        <form method="POST" action="{{ route('deposit.date.check') }}">
+        <form method="POST" action="{{ route('date.store') }}">
             @csrf
             <div class="input-area">
                 <label for="day">তারিখ</label>
@@ -82,6 +82,7 @@
             </div>
 
             <div class="btn-area">
+                <input type="text" name="page" value="{{ $page }}">
                 <button class="btn-primary btn" type="submit">এগিয়ে যান</button>
             </div>
         </form>
