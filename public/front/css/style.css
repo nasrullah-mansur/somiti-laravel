@@ -550,6 +550,18 @@ input[type=number] {
   padding: 120px 0;
 }
 
+.categories .title {
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+
+.categories h2 {
+  font-size: 34px;
+  padding-bottom: 10px;
+  color: #5f27cd;
+  border-bottom: 1px solid #000;
+}
+
 @media (max-width: 575px) {
   .categories {
     padding: 40px 0;

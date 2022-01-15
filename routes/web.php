@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\CollectionController;
-use App\Http\Controllers\HolderController;
-use App\Http\Controllers\PolicySelect;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PolicySelect;
+use App\Http\Controllers\LoanController;
+use App\Http\Controllers\HolderController;
+use App\Http\Controllers\DepositController;
+use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\WithdrawController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +34,9 @@ Route::middleware(['auth'])->group(function() {
     })->name('dashboard');
 
     // User type;
-    Route::get('/type-of-holder', function() {
-        return view('front.selection.holder');
-    })->name('holder.type');
+    // Route::get('/type-of-holder', function() {
+    //     return view('front.selection.holder');
+    // })->name('holder.type');
 
     // Find user by phone;
     Route::get('/find-user-by-phone', function() {
@@ -58,13 +61,20 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/policy/holder/{id}', [HolderController::class, 'show'])->name('holder.show');
 
 
-    // Money route;
-    Route::get('/collection-date', [CollectionController::class, 'collection_date'])->name('collection.date');
-    Route::post('/collection-date', [CollectionController::class, 'collection_date_check'])->name('collection.date.check');
-    Route::get('/collection/policy-select', [CollectionController::class, 'policy_select'])->name('collection.policy.select');
-    Route::post('/collection/policy-select', [CollectionController::class, 'policy_select_get'])->name('collection.policy.select.get');
-    Route::get('/collection/money/create/{id}', [CollectionController::class, 'add_money_create'])->name('collection.money.create');
-    Route::post('/collection/money/sore/{id}', [CollectionController::class, 'add_money_store'])->name('collection.money.store');
+    // Deposit route;
+    Route::get('/deposit-date', [DepositController::class, 'deposit_date'])->name('deposit.date');
+    Route::post('/deposit-date', [DepositController::class, 'deposit_date_check'])->name('deposit.date.check');
+    Route::get('/deposit/policy-select', [DepositController::class, 'policy_select'])->name('deposit.policy.select');
+    Route::post('/deposit/policy-select', [DepositController::class, 'policy_select_get'])->name('deposit.policy.select.get');
+    Route::get('/deposit/money/create/{id}', [DepositController::class, 'add_money_create'])->name('deposit.money.create');
+    Route::post('/deposit/money/sore/{id}', [DepositController::class, 'add_money_store'])->name('deposit.money.store');
+
+    // Withdraw route;
+    Route::get('/withdraw/select-policy', [WithdrawController::class, 'select_policy'])->name('withdraw.select.policy');
+    Route::post('/withdraw/select-policy', [WithdrawController::class, 'select_policy_add'])->name('withdraw.select.policy.add');
+    Route::get('/withdraw/check-ability/{id}', [WithdrawController::class, 'check_ability'])->name('withdraw.check.ability');
+    Route::get('/withdraw/create/{id}', [WithdrawController::class, 'create'])->name('withdraw.create');
+    Route::post('/withdraw/store/{id}', [WithdrawController::class, 'store'])->name('withdraw.store');
 
 });
 

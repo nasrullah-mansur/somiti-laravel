@@ -4,7 +4,7 @@
 <section class="login">
     <div class="container">
         <h1>দিন নির্বাচন করুন</h1>
-        <form method="POST">
+        <form method="POST" action="{{ route('deposit.date.check') }}">
             @csrf
             <div class="input-area">
                 <label for="day">তারিখ</label>

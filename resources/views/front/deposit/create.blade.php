@@ -40,21 +40,21 @@
             </script>
             
             <h2 class="text-start">নগদ জমা ‍<span class="bn-text">- {{ Session::get('today_day') }} <script>document.write(today_months[{{ Session::get('today_month') }}])</script> {{ Session::get('today_year') }}</span></h2>
-            <form method="POST" action="{{ route('collection.money.store', $holder->id) }}">
+            <form method="POST" action="{{ route('deposit.money.store', $holder->id) }}">
                 @csrf
                 <div class="input-area">
-                    <input name="number" id="name" type="number" placeholder="টাকার পরিমাণ" value="{{ $money ? $money->amount : '' }}">
+                    <input name="number" id="name" type="number" placeholder="টাকার পরিমাণ" value="{{ $deposit ? $deposit->amount : '' }}">
                     @if($errors->any())
                     <small>টাকার পরিমাণ সঠিক ভাবে দিন</small>
                     @endif
                 </div>
                 <div class="input-area">
-                    <input name="con_number" type="number" placeholder="পুনরায় টাকার পরিমাণ" value="{{ $money ? $money->amount : '' }}">
+                    <input name="con_number" type="number" placeholder="পুনরায় টাকার পরিমাণ" value="{{ $deposit ? $deposit->amount : '' }}">
                 </div>
                 <div class="btn-area text-start">
                     <button class="btn-primary btn" type="submit">টাকা জমা করুন</button>
-                    <input type="hidden" name="exist" value="{{ $money ? 'yes' : 'no' }}">
-                    <input type="hidden" name="prev" value="{{ $money ? $money->amount : '0' }}">
+                    <input type="hidden" name="exist" value="{{ $deposit ? 'yes' : 'no' }}">
+                    <input type="hidden" name="prev" value="{{ $deposit ? $deposit->amount : '0' }}">
                 </div>
             </form>
         </div>
