@@ -24,19 +24,46 @@
                   </tr>
                   <tr>
                     <td>ব্যলেন্স</td>
-                    <td>{{ $holder->balance }}</td>
+                    <td>{{ $holder->balance ? $holder->balance : '0' }}</td>
+                  </tr>
+                  
+                  <tr>
+                    <script>
+                      let months = [
+                                    'জানুয়ারী',
+                                    'ফেব্রুয়ারী',
+                                    'মার্চ',
+                                    'এপ্রিল',
+                                    'মে',
+                                    'জুন',
+                                    'জুলাই',
+                                    'আগস্ট',
+                                    'সেপ্টেম্বর',
+                                    'অক্টবর',
+                                    'নভেম্বর',
+                                    'ডিসেম্বর',
+                                ]
+                    </script>
+                    <td>ঋণ গ্রহনের তারিখ</td>
+                    <td>
+                      @if (!$loan->day && !$loan->month && !$loan->year)
+                      <span>প্রযজ্য নয়</span>
+                      @else
+                      <script>document.write(months[{{ $loan->month }} - 1])</script> {{ $loan->day }} {{ $loan->year }}
+                      @endif
+                    </td>
                   </tr>
                   <tr>
                     <td>একটিভ ঋণ</td>
-                    <td>{{ $holder->loan->amount }}</td>
+                    <td>{{ $loan->amount ? $loan->amount : '0' }}</td>
                   </tr>
                   <tr>
                     <td>ঋণ বাকি</td>
-                    <td>{{ $holder->loan->due }}</td>
+                    <td>{{ $loan->due ? $loan->due : '0' }}</td>
                   </tr>
                   <tr>
                     <td>দৈনিক আদায়</td>
-                    <td>{{ $holder->loan->daily_pay }}</td>
+                    <td>{{ $loan->daily_pay ? $loan->daily_pay : '0' }}</td>
                   </tr>
                   
                 </tbody>
@@ -70,7 +97,12 @@
                 </tbody>
               </table>
         </div>
+        @if ($loan->due > 0) 
+          <p class="m-0">সদস্য নতুন ঋণ পাবার উপযুক্ত নয় </p>
+          <a href="{{ route('loan.give', $holder->id) }}">সংশধন করুন</a>
+        @else
         <a href="{{ route('loan.give', $holder->id) }}" class="btn btn-primary">ঋণের পরিমাণ যোগ করুন</a>
+        @endif 
     </div>
 </section>
 @endsection

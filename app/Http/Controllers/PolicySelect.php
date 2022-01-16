@@ -9,7 +9,7 @@ class PolicySelect extends Controller
 {
     public function policy_select()
     {
-        $policies = Holder::orderBy('policy')->get('policy');
+        $policies = Holder::orderBy('policy')->where('status', STATUS_ON)->get('policy');
         return view('front.selection.policy', compact('policies'));
     }
 

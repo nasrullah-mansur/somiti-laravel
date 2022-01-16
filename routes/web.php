@@ -112,6 +112,9 @@ Route::middleware(['auth'])->group(function() {
     |--------------------------------------------------------------------------
     |
     */
+
+    Route::get('/loan/all/account', [LoanController::class, 'index'])->name('loan.index');
+    Route::get('/loan/all/account/list', [LoanController::class, 'list'])->name('loan.list');
     
     Route::get('/loan/account/create', [LoanController::class, 'create_account'])->name('loan.account.create');
     Route::post('/loan/account/create', [LoanController::class, 'create_account_store'])->name('loan.account.store');
@@ -120,6 +123,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/loan/ability-check/{id}', [LoanController::class, 'ability_check'])->name('loan.ability.check');
     Route::get('/loan/give-loan/{id}', [LoanController::class, 'give_loan'])->name('loan.give');
     Route::post('/loan/give-loan', [LoanController::class, 'give_loan_store'])->name('loan.give.store');
+    Route::get('/loan/delete/{id}', [LoanController::class, 'delete'])->name('loan.delete');
 
     /*
     |--------------------------------------------------------------------------
@@ -131,6 +135,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/installment/select-policy', [InstallmentController::class, 'select_policy'])->name('ins.select.policy');
     Route::post('/installment/select-policy', [InstallmentController::class, 'ins_policy_store'])->name('ins.select.policy.store');
     Route::get('/installment/create/{id}', [InstallmentController::class, 'ins_create'])->name('ins.create');
+    Route::post('/installment/store', [InstallmentController::class, 'ins_store'])->name('ins.store');
 
 });
 

@@ -25,99 +25,42 @@
             <form method="POST" action="{{ route('withdraw.store', $holder->id) }}">
                 @csrf
                 <div class="input-area">
-                    <input id="name" type="number" name="number" placeholder="পরিমাণ দিন">
+                    <input id="name" type="number" name="number" placeholder="পরিমাণ দিন" value="{{ $exist ? $exist->amount : '' }}">
                     @if ($errors->any())
                     <small>নগদ প্রদানের পরিমাণ সঠিক ভাবে দিন</small>
                     @endif
                 </div>
                 <div class="input-area">
-                    <input type="number" name="re_number" placeholder="পুনরায় পরিমাণ ‍দিন">
+                    <input type="number" name="re_number" placeholder="পুনরায় পরিমাণ ‍দিন" value="{{ $exist ? $exist->amount : '' }}">
                 </div>
-                <div class="join-date">
-                    <h5 class="text-start">প্রদানের তারিখ</h5>
-                    <div class="selections d-flex">
-                        <div class="input-area w-100 me-2">
-                            <label for="day">তারিখ</label>
-                            <select id="day" name="day" class="custom-select bn">
-                                <script>
-                                    let todayDate = (new Date()).getDate();
-                                    function dayFn(value) {
-                                        if(value === todayDate) {
-                                            return `<option selected value="${value}">${value}</option>`;
-                                        } else {
-                                            return `<option value="${value}">${value}</option>`;
-                                        }
-                                    }
-                                    for(let dayI = 1; dayI <= 31; dayI++) {
-                                        document.write( dayFn(dayI) )
-                                    }
-                                </script>
-                            </select>
-                        </div>
-        
-                        <div class="input-area w-100 me-2">
-                            <label for="month">মাস</label>
-                            <select name="month" id="month" class="custom-select bn">
-        
-                                <script>
-                                    let months = [
-                                        'জানুয়ারী',
-                                        'ফেব্রুয়ারী',
-                                        'মার্চ',
-                                        'এপ্রিল',
-                                        'মে',
-                                        'জুন',
-                                        'জুলাই',
-                                        'আগস্ট',
-                                        'সেপ্টেম্বর',
-                                        'অক্টবর',
-                                        'নভেম্বর',
-                                        'ডিসেম্বর',
-                                    ]
-                                    let thisMonth = (new Date()).getMonth();
-                                    function monthFn(value) {
-                                        if(value === (thisMonth + 1)) {
-                                            return `<option selected value="${value}">${months[value - 1]}</option>`;
-                                        } else {
-                                            return `<option value="${value}">${months[value - 1]}</option>`;
-                                        }
-                                    }
-        
-                                    for(let monthI = 1; monthI <=12; monthI++) {
-                                        document.write( monthFn(monthI) );
-                                    }
-                                </script>
-        
-                            </select>
-                        </div>
-        
-                        <div class="input-area w-100">
-                            <label for="year">বছর</label>
-                            <select id="year" name="year" class="custom-select bn">
-                                
-                                <script>
-                                    let thisYear = (new Date()).getFullYear();
-                                    function thisYearFun(value) {
-                                        if(value === thisYear) {
-                                            return `<option selected value="${value}">${value}</option>`;
-                                        } else {
-                                            return `<option value="${value}">${value}</option>`;
-                                        }
-                                    }
-                                    for(let yearI = (thisYear - 20); yearI <= thisYear; yearI++) {
-                                        document.write(thisYearFun(yearI))
-                                    }
-                                </script>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="btn-area text-start">
-                    <button class="btn-primary btn" type="submit">নগদ প্রদান করুন</button>
+
+                    @if ($exist)
+                        <p>আজকের নগদ আদায় সম্পন্য হয়েছে <a href="javascript:void(0);" id="edit-btn">এডিট করুন</a></p>
+                        <input type="text" name="old_value" value="{{ $exist->amount }}">
+                        @endif
+                        
+                        <div id="submit-area" class="{{ $exist ? 'd-none' : '' }}">
+                        <button class="btn-primary btn" type="submit">নগদ প্রদান করুন</button>
+                    </div>
+
                 </div>
             </form>
         </div>
     </div>
+    
 </section>
 
+@endsection
+
+@section('custom_js')
+<script>
+    let editBtn = document.getElementById('edit-btn');
+    let sumbitArea = document.getElementById('submit-area');
+
+    editBtn.addEventListener('click', function() {
+        sumbitArea.classList.remove('d-none');
+    })
+</script>
 @endsection

@@ -17,7 +17,7 @@
             <a href="{{ route('date.select', 'installment') }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
-                    <h4>ঋণ কালেকশন</h4>
+                    <h4>কিস্তি কালেকশন</h4>
                 </div>
             </a>
             
@@ -70,7 +70,7 @@
             <a href="#">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
-                    <h4>ঋণ উত্তলন অনুসন্ধান</h4>
+                    <h4>কিস্তি উত্তলন অনুসন্ধান</h4>
                 </div>
             </a>
             
@@ -106,7 +106,7 @@
                     <h4>ঋণ একাউন্ট তৈরী</h4>
                 </div>
             </a>
-            <a href="#">
+            <a href="{{ route('loan.index') }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-4.png') }}" alt="img">
                     <h4>সকল ঋণ একাউন্ট</h4>

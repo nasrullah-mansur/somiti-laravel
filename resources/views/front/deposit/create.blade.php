@@ -52,12 +52,29 @@
                     <input name="con_number" type="number" placeholder="পুনরায় টাকার পরিমাণ" value="{{ $deposit ? $deposit->amount : '' }}">
                 </div>
                 <div class="btn-area text-start">
-                    <button class="btn-primary btn" type="submit">টাকা জমা করুন</button>
-                    <input type="hidden" name="exist" value="{{ $deposit ? 'yes' : 'no' }}">
-                    <input type="hidden" name="prev" value="{{ $deposit ? $deposit->amount : '0' }}">
+                    @if ($deposit)
+                        <p class="mb-2">আজকের নগদ আদায় সম্পন্য হয়েছে ‍<a href="javascript:void(0);" id="edit-btn">এডিট করুন</a></p>
+                    @endif
+
+                    <div class="{{ $deposit ? 'd-none' : '' }}" id="submit-area">
+                        <button class="btn-primary btn" type="submit">টাকা {{ $deposit ? 'এডিট' : 'জমা' }} করুন</button>
+                        <input type="hidden" name="exist" value="{{ $deposit ? 'yes' : 'no' }}">
+                        <input type="hidden" name="prev" value="{{ $deposit ? $deposit->amount : '0' }}">
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </section>
+@endsection
+
+@section('custom_js')
+<script>
+    let editBtn = document.getElementById('edit-btn');
+    let sumbitArea = document.getElementById('submit-area');
+
+    editBtn.addEventListener('click', function() {
+        sumbitArea.classList.remove('d-none');
+    })
+</script>
 @endsection

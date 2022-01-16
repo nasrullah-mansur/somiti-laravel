@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\File;
 // Helper variable;
 const MIN_VALUE_FOR_WITHDRAW = 100;
 const DEFAULT_BLANK_DATA = 'প্রযজ্য নয়';
+const STATUS_ON = 'on';
+const STATUS_OFF = 'off';
 
 
 // ================ Image Upload =========================== //

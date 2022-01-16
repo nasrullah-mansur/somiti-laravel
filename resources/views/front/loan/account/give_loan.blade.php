@@ -25,19 +25,23 @@
             <form method="POST" action="{{ route('loan.give.store') }}">
                 @csrf
                 <div class="input-area">
-                    <input id="name" type="number" name="number" placeholder="পরিমাণ দিন">
+                    <input id="name" type="number" name="number" placeholder="পরিমাণ দিন" value="{{ $loan->amount && $loan->due ? $loan->amount : '' }}">
                     @if ($errors->has('number'))
                     <small>{{ $errors->first('number') }}</small>
                     @endif
                 </div>
                 <div class="input-area">
-                    <input type="number" name="re_number" placeholder="পুনরায় পরিমাণ ‍দিন">
+                    <input type="number" name="re_number" placeholder="পুনরায় পরিমাণ ‍দিন" value="{{ $loan->amount && $loan->due ? $loan->amount : '' }}">
                     @if ($errors->has('re_number'))
                     <small>{{ $errors->first('re_number') }}</small>
                     @endif
                 </div>
+
+                
+                @if ($loan->amount == null || $loan->due <= 0)
+                
                 <div class="join-date">
-                    <h5 class="text-start">প্রদানের তারিখ</h5>
+                    <h5 class="text-start">প্রদানের তারিখ ‍<small class="text-danger" style="font-size: 12px">* তারিখ পরিবর্তনযোগ্য নয়</small></h5>
                     <div class="selections d-flex">
                         <div class="input-area w-100 me-2">
                             <label for="day">তারিখ</label>
@@ -115,17 +119,18 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
                 <div class="input-area">
                 <label for="balance">দৈনিক আদায়ের পরিমাণ</label>
-                <input id="balance" name="daily_pay" type="number" placeholder="দৈনিক আদায়ের পরিমাণ">
+                <input id="balance" name="daily_pay" type="number" placeholder="দৈনিক আদায়ের পরিমাণ" value="{{ $loan->daily_pay && $loan->due ? $loan->daily_pay : '' }}">
                 @if ($errors->has('daily_pay'))
                 <small>{{ $errors->first('daily_pay') }}</small>
                 @endif
             </div>
                 <div class="btn-area text-start">
                     <input type="text" name="holder_id" value="{{ $holder->id }}">
-                    <button class="btn-primary btn" type="submit">নগদ প্রদান করুন</button>
+                    <button class="btn-primary btn" type="submit">ঋণ {{ $loan->due ? 'সংশধন' : 'প্রদান' }} করুন</button>
                 </div>
             </form>
         </div>

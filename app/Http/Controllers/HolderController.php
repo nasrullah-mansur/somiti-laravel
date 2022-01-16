@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Deposit;
+use DataTables;
 use App\Models\Holder;
+use App\Models\Deposit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use DataTables;
+use Brian2694\Toastr\Facades\Toastr;
 
 class HolderController extends Controller
 {
@@ -23,6 +24,20 @@ class HolderController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
+
+                    if($row->status == STATUS_ON) {
+                        $deleteBtn = '<a class="btn btn-sm btn-secondary me-1 delete-btn" href="'.route('holder.delete', $row->id).'">
+                                            <i class="fas fa-lock"></i>
+                                            বন্ধ
+                                        </a>';
+                    } else {
+                        $deleteBtn = '<a class="btn btn-sm btn-secondary me-1 delete-btn" href="'.route('holder.delete', $row->id).'">
+                                            <i class="fas fa-lock-open"></i>
+                                            চালু
+                                        </a>';
+                        }
+                    
+
                     $actionBtn = '<div class="d-flex">
                     <a class="btn btn-sm btn-primary me-1" href="'. route('holder.show', $row->id) .'">
                         <i class="fas fa-eye"></i>
@@ -31,12 +46,8 @@ class HolderController extends Controller
                     <a class="btn btn-sm btn-primary me-1" href="'.route('holder.edit', $row->id).'">
                         <i class="fas fa-edit"></i>
                         এডিট
-                    </a>
-                    <a class="btn btn-sm btn-secondary me-1 delete-btn" href="'.route('holder.delete', $row->id).'">
-                        <i class="fas fa-trash-alt"></i>
-                        ডিলিট
-                    </a>
-                </div>';
+                    </a>'. $deleteBtn .' </div>';
+                    
                     return $actionBtn;
                 })
                 ->editColumn('photo', function($row) {
@@ -46,8 +57,42 @@ class HolderController extends Controller
                         return 'ছবি নাই';
                     }
                 })
+                ->editColumn('balance', function($row) {
+                    if($row->balance) {
+                        return $row->balance;
+                    } else {
+                        return '0';
+                    }
+                })
+                ->editColumn('status', function($row) {
+                    if($row->status == 'on') {
+                        return 'চালু';
+                    } else {
+                        return 'বন্ধ';
+                    }
+                })
                 ->editColumn('joining_date', function($row) {
-                    return Carbon::parse($row->joining_date)->format('F j, Y');
+
+                    $months = [
+                        '01' => 'জানুয়ারী',
+                        '02' => 'ফেব্রুয়ারী',
+                        '03' => 'মার্চ',
+                        '04' => 'এপ্রিল',
+                        '05' => 'মে',
+                        '06' => 'জুন',
+                        '07' => 'জুলাই',
+                        '08' => 'আগস্ট',
+                        '09' => 'সেপ্টেম্বর',
+                        '10' => 'অক্টবর',
+                        '11' => 'নভেম্বর',
+                        '12' => 'ডিসেম্বর',
+                    ];
+
+                    $day = Carbon::parse($row->joining_date)->format('d');
+                    $month = Carbon::parse($row->joining_date)->format('m');
+                    $year = Carbon::parse($row->joining_date)->format('Y');
+
+                    return ($months[$month] . ' ' . $day . ' ' . $year);
                 })
                 ->rawColumns(['action', 'photo'])
                 ->make(true);
@@ -133,14 +178,20 @@ class HolderController extends Controller
     public function delete($id)
     {
         $holder = Holder::where('id', $id)->firstOrFail();
-        removeImage($holder->photo);
-        $holder->delete();
-
-        $deposits = Deposit::where('holder_id', $holder->id)->get();
-        foreach ($deposits as $deposit) {
-            $deposit->delete();
+        // removeImage($holder->photo);
+        if($holder->status == STATUS_ON) {
+            $holder->status = STATUS_OFF;
+        } else {
+            $holder->status = STATUS_ON;
         }
 
+        $holder->save();
+
+        // $deposits = Deposit::where('holder_id', $holder->id)->get();
+        // foreach ($deposits as $deposit) {
+        //     $deposit->delete();
+        // }
+        Toastr::success('একাউন্টটির অবস্থা সফলভাবে পরিবর্তিত হয়েছে', 'অভিনন্দন', ["positionClass" => "toast-bottom-left"]);
         return redirect()->route('holder.index');
     }
 

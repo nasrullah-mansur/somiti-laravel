@@ -6,6 +6,7 @@ use App\Models\Money;
 use App\Models\Holder;
 use App\Models\Deposit;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Session;
 
 class DepositController extends Controller
@@ -15,7 +16,7 @@ class DepositController extends Controller
     public function policy_select()
     {
         if(Session::has('today_day') && Session::has('today_month') && Session::has('today_year')) {
-            $policies = Holder::orderBy('policy')->get('policy');
+            $policies = Holder::orderBy('policy')->where('status', STATUS_ON)->get('policy');
             return view('front.deposit.policy', compact('policies'));
         } else {
             return view('front.deposit.date');
@@ -91,6 +92,9 @@ class DepositController extends Controller
         // return $balance;
 
         $balance->save();
+
+        Toastr::success($holder->name . ' ' . $request->number . ' টাকা নগদ জমা দিয়েছেন !!', 'অভিনন্দন', ["positionClass" => "toast-bottom-left"]);
+
 
         return redirect()->route('deposit.policy.select');
     }

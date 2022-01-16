@@ -34,7 +34,11 @@
             <div class="input-area">
                 <select id="day" name="policy" class="custom-select">
                     @foreach ($policies as $policy)
-                    <option value="{{ $policy->policy }}">{{ $policy->policy }}</option> 
+                    @foreach ($policy->loan as $single_policy)
+                        @if ($single_policy->due && $single_policy->due > 0)
+                        <option value="{{ $policy->policy }}">{{ $policy->policy }}</option> 
+                        @endif
+                    @endforeach
                     @endforeach
                 </select>
             </div>

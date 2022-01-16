@@ -79,7 +79,7 @@ $(document).ready(function() {
         document.querySelector('.table').addEventListener('click', function(e) {
             let deleteBtn = e.target.classList.contains('delete-btn') || e.target.parentElement.classList.contains('delete-btn');
             if(deleteBtn) {
-                let confirmVal = confirm("আপনি কি সত্যিই মুছে ফেলতে ইচ্ছুক ???");
+                let confirmVal = confirm("আপনি কি সত্যিই পরিবর্তন করতে ইচ্ছুক ???");
                 if(!confirmVal) {
                     e.preventDefault();
                 }

@@ -11,6 +11,6 @@ class Holder extends Model
 
     public function loan()
     {
-        return $this->hasOne(Loan::class);
+        return $this->hasMany(Loan::class);
     }
 }

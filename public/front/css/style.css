@@ -78,6 +78,7 @@ select:hover {
           box-shadow: none;
 }
 
+
 img:not([draggable]),
 embed,
 object,
@@ -461,6 +462,11 @@ input[type=number] {
   border: 1px solid #ddd;
   padding: 0 10px;
   height: 45px;
+}
+
+.input-area input[readonly],
+.input-area textarea[readonly] {
+  background-color: #eee;
 }
 
 .input-area input::-webkit-input-placeholder,

@@ -22,6 +22,7 @@ class CreateHoldersTable extends Migration
             $table->string('photo')->nullable();
             $table->string('balance')->nullable();
             $table->string('phone')->nullable();
+            $table->string('status')->default(STATUS_ON);
             $table->timestamps();
         });
     }

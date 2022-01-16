@@ -22,6 +22,7 @@ class CreateLoansTable extends Migration
             $table->integer('year')->nullable();
             $table->integer('amount')->nullable();
             $table->integer('due')->nullable();
+            $table->string('status')->default(STATUS_ON);
             $table->timestamps();
         });
     }
