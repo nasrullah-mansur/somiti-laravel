@@ -8,6 +8,7 @@ use App\Http\Controllers\DepositController;
 use App\Http\Controllers\WithdrawController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\InstallmentController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SelectDateController;
 
 /*
@@ -136,6 +137,29 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/installment/select-policy', [InstallmentController::class, 'ins_policy_store'])->name('ins.select.policy.store');
     Route::get('/installment/create/{id}', [InstallmentController::class, 'ins_create'])->name('ins.create');
     Route::post('/installment/store', [InstallmentController::class, 'ins_store'])->name('ins.store');
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Search Routes
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    Route::get('/search/selection/{route}', [SearchController::class, 'select_date'])->name('search.selection');
+
+    Route::get('/search/selection/day/{route}', [SearchController::class, 'day'])->name('search.select.day');
+    Route::post('/search/selection/day', [SearchController::class, 'day_store'])->name('search.select.day.store');
+    Route::get('/search/selection/day/{route}/{day}/{month}/{year}', [SearchController::class, 'search_data_by_day'])->name('search.data.by.day');
+
+    Route::get('/search/selection/month/{route}', [SearchController::class, 'month'])->name('search.select.month');
+    Route::post('/search/selection/month', [SearchController::class, 'month_store'])->name('search.select.month.store');
+    Route::get('/search/selection/month/{route}/{month}/{year}', [SearchController::class, 'search_data_by_month'])->name('search.data.by.month');
+
+    Route::get('/search/selection/year/{route}', [SearchController::class, 'year'])->name('search.select.year');
+
+
 
 });
 

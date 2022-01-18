@@ -8,23 +8,23 @@ $(document).ready(function() {
         }
     });
 
-    $('.header .content .mobile').on('click', function() {
-        $('.header .content .list').toggleClass('active');
-        $('body').toggleClass('overflow-hidden')
-        $('.body-overlay').fadeToggle();
-        let img = ($(this).find('img').attr('src')).split('/');
-        let imgName;
+    // $('.header .content .mobile').on('click', function() {
+    //     $('.header .content .list').toggleClass('active');
+    //     $('body').toggleClass('overflow-hidden')
+    //     $('.body-overlay').fadeToggle();
+    //     let img = ($(this).find('img').attr('src')).split('/');
+    //     let imgName;
 
-        if(img.includes('menu.png')){
-            img[img.length - 1] = 'close.png';
-        } else {
-            img[img.length - 1] = 'menu.png';
-        }
+    //     if(img.includes('menu.png')){
+    //         img[img.length - 1] = 'close.png';
+    //     } else {
+    //         img[img.length - 1] = 'menu.png';
+    //     }
         
-        imgName = img.join('/');
-        $(this).find('img').attr('src', imgName);
+    //     imgName = img.join('/');
+    //     $(this).find('img').attr('src', imgName);
 
-    })
+    // })
 
 
     $('.input-area .show-pass').on('click', function() {
@@ -86,8 +86,10 @@ $(document).ready(function() {
             }
         })
     }
-    
 
+
+    $('.input-area .custom-select').select2();
+    $('.data-table-set').DataTable();
 
 
 });

@@ -49,28 +49,28 @@
             <h2>হিসাব অনুসন্ধান</h2>
         </div>
         <div class="items">
-            <a href="#">
+            <a href="{{ route('search.selection', 'deposit') }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
-                    <h4>নগদ জমা অনুসন্ধান</h4>
+                    <h4>নগদ কালেকশন অনুসন্ধান</h4>
                 </div>
             </a>
-            <a href="#">
+            <a href="{{ route('search.selection', 'withdraw') }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
-                    <h4>নগদ উত্তলন অনুসন্ধান</h4>
+                    <h4>নগদ প্রদান অনুসন্ধান</h4>
                 </div>
             </a>
-            <a href="#">
+            <a href="{{ route('search.selection', 'loan') }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>ঋণ প্রদান অনুসন্ধান</h4>
                 </div>
             </a>
-            <a href="#">
+            <a href="{{ route('search.selection', 'installment') }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
-                    <h4>কিস্তি উত্তলন অনুসন্ধান</h4>
+                    <h4>কিস্তি কালেকশন অনুসন্ধান</h4>
                 </div>
             </a>
             

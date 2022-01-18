@@ -59,9 +59,12 @@
                   orderable: false, 
                   searchable: false
               },
-          ]
+          ],
+          
       });
       
     });
+
+    console.log('ok');
   </script>
 @endsection

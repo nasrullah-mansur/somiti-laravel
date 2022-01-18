@@ -4,7 +4,7 @@
 <section class="login">
     <div class="container">
         <h1>দিন নির্বাচন করুন</h1>
-        <form method="POST" action="{{ route('date.store') }}">
+        <form method="POST" action="{{ route('search.select.day.store') }}">
             @csrf
             <div class="input-area">
                 <label for="day">তারিখ</label>
@@ -58,7 +58,6 @@
                         }
                     </script>
 
-
                 </select>
             </div>
 
@@ -83,7 +82,7 @@
             </div>
 
             <div class="btn-area">
-                <input type="text" name="page" value="{{ $page }}">
+                <input type="text" name="page" value="{{ $route }}">
                 <button class="btn-primary btn" type="submit">তারিখ সিলেক্ট করুন</button>
             </div>
         </form>

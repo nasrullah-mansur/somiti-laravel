@@ -21,7 +21,7 @@
             </div>
 
             <div class="btn-area">
-                <button class="btn-primary btn" type="submit">এগিয়ে যান</button>
+                <button class="btn-primary btn" type="submit">পলিসি সিলেক্ট করুন</button>
                 <input type="hidden" name="for" value="policy">
             </div>
         </form>

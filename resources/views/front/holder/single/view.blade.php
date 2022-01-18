@@ -7,7 +7,29 @@
             <img src="{{ asset($holder->photo ? $holder->photo : 'front/images/profile.jpg') }}" alt="img">
             <div class="title">
                 <h1 class="m-0">{{ $holder->name }} ( <span>{{ $holder->policy }}</span> )</h1>
-                <small>ভর্তির তারিখ - <span class="bn-text">12-12-2020</span></small>
+                <small>ভর্তির তারিখ - <span class="bn-text">
+                  <script>
+                    let months = [
+                                'জানুয়ারী',
+                                'ফেব্রুয়ারী',
+                                'মার্চ',
+                                'এপ্রিল',
+                                'মে',
+                                'জুন',
+                                'জুলাই',
+                                'আগস্ট',
+                                'সেপ্টেম্বর',
+                                'অক্টবর',
+                                'নভেম্বর',
+                                'ডিসেম্বর',
+                            ];
+
+                            let currentMonth = months["{{ \Carbon\Carbon::parse($holder->joining_date)->format('m') }}" - 1];
+                  </script>
+                    <script>document.write(currentMonth)</script>
+                  {{ \Carbon\Carbon::parse($holder->joining_date)->format('d') }}  
+                  {{ \Carbon\Carbon::parse($holder->joining_date)->format('Y') }}  
+                </small>
             </div>
         </div>
         <div class="user-address">

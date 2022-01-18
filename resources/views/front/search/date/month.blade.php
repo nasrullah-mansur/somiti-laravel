@@ -3,28 +3,10 @@
 @section('content')
 <section class="login">
     <div class="container">
-        <h1>দিন নির্বাচন করুন</h1>
-        <form method="POST" action="{{ route('date.store') }}">
+        <h1>মাস নির্বাচন করুন</h1>
+        <form method="POST" action="{{ route('search.select.month.store') }}">
             @csrf
-            <div class="input-area">
-                <label for="day">তারিখ</label>
-                <select name="day" id="day" class="custom-select bn">
-                    <script>
-                        let todayDate = (new Date()).getDate();
-                        function dayFn(value) {
-                            if(value === todayDate) {
-                                return `<option selected value="${value}">${value}</option>`;
-                            } else {
-                                return `<option value="${value}">${value}</option>`;
-                            }
-                        }
-                        for(let dayI = 1; dayI <= 31; dayI++) {
-                            document.write( dayFn(dayI) )
-                        }
-                    </script>
-                </select>
-            </div>
-
+            
             <div class="input-area">
                 <label for="month">মাস</label>
                 <select name="month" id="month" class="custom-select bn">
@@ -58,7 +40,6 @@
                         }
                     </script>
 
-
                 </select>
             </div>
 
@@ -83,8 +64,8 @@
             </div>
 
             <div class="btn-area">
-                <input type="text" name="page" value="{{ $page }}">
-                <button class="btn-primary btn" type="submit">তারিখ সিলেক্ট করুন</button>
+                <input type="text" name="page" value="{{ $route }}">
+                <button class="btn-primary btn" type="submit">মাস সিলেক্ট করুন</button>
             </div>
         </form>
     </div>

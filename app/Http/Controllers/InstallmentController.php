@@ -50,24 +50,26 @@ class InstallmentController extends Controller
         if($exist) {
             $ins = $exist;
 
-            if($due_check < $request->number) {
-                return redirect()->back()->withErrors(['error' => 'amount greater then due']);
-            }
             
         } else {
             $ins = new Installment();
         }
+        
+        if($due_check < $request->number) {
+            return redirect()->back()->withErrors(['error' => 'amount greater then due']);
+        }
 
         
+        $loan = Loan::where('holder_id', $holder->id)->orderBy('created_at', 'DESC')->firstOrFail();
 
         $ins->holder_id = $request->holder_id;
         $ins->amount = $request->number;
         $ins->day = $day;
         $ins->month = $month;
         $ins->year = $year;
+        $ins->loan_id = $loan->id;
         $ins->save();
 
-        $loan = Loan::where('holder_id', $holder->id)->orderBy('created_at', 'DESC')->firstOrFail();
 
         
         if( $request->has('old_amount') ) {
@@ -87,7 +89,7 @@ class InstallmentController extends Controller
         $loan->due = $due_loan;
         $loan->save();
 
-        Toastr::success($holder->name . ' ' . $request->number . ' টাকা জমা দিয়েছেন !!', 'অভিনন্দন', ["positionClass" => "toast-bottom-left"]);
+        Toastr::success($holder->name . ' ' . $request->number . ' টাকা কিস্তি জমা দিয়েছেন !!', 'অভিনন্দন', ["positionClass" => "toast-bottom-left"]);
 
         return redirect()->route('ins.select.policy');
         

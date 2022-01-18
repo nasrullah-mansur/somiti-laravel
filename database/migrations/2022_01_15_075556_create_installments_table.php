@@ -16,6 +16,7 @@ class CreateInstallmentsTable extends Migration
         Schema::create('installments', function (Blueprint $table) {
             $table->id();
             $table->integer('holder_id');
+            $table->integer('loan_id');
             $table->integer('day');
             $table->integer('month');
             $table->integer('year');

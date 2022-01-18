@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Withdraw extends Model
 {
     use HasFactory;
+
+    public function holder()
+    {
+        return $this->belongsTo(Holder::class);
+    }
 }
