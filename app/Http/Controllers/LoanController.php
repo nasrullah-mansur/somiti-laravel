@@ -94,7 +94,7 @@ class LoanController extends Controller
 
     public function give_loan_store(Request $request)
     {
-        // return $request;
+        
         $request->validate([
             'number' => 'required|integer',
             're_number' => 'required|integer|same:number',
@@ -106,10 +106,7 @@ class LoanController extends Controller
             'daily_pay.required' => 'দৈনিক আদাদেয়র পরিমাণ সঠিক ভাবে দিন'
         ]);
 
-        // return $request;
         $exist = Loan::where('holder_id', $request->holder_id)->orderBy('created_at', 'DESC')->firstOrFail();
-
-        // return $exist->due == null && $exist->due > 0;
 
         if($exist->due == null && $exist->amount == null) {
             $ins = $exist;
@@ -126,38 +123,6 @@ class LoanController extends Controller
         else {
             $ins = $exist;
         }
-
-
-
-
-
-        // if($exist->due == null && $exist->due > 0) {
-        //     $ins = new Loan();
-        //     $ins->day = $request->day;
-        //     $ins->month = $request->month;
-        //     $ins->year = $request->year;
-        // } else {
-        //     $ins = $exist;
-        // }
-
-
-        // if($exist->due > 0 || $exist->due == null) {
-        //     $ins = $exist;
-
-        //     if($exist->due == null) {
-        //         $ins->day = Session::get('today_day');
-        //         $ins->month = Session::get('today_month');
-        //         $ins->year = Session::get('today_year');
-        //     }
-        // } else {
-        //     $ins = new Loan();
-        //     $ins->day = $request->day;
-        //     $ins->month = $request->month;
-        //     $ins->year = $request->year;
-        // }
-
-        // $ins = $exist;
-
         
         $ins->holder_id = $request->holder_id;
         
@@ -180,11 +145,9 @@ class LoanController extends Controller
         // ***********************************************
     
     */
-    
 
     public function index()
     {
-        // return $data = Loan::with('holder')->latest()->get();
         return view('front.loan.account.index');
     }
 
@@ -305,7 +268,7 @@ class LoanController extends Controller
         }
 
         else {
-            // $loan->delete();
+            
             Toastr::success('ঋণ একাউন্টটির অবস্থা সফলভাবে পরিবর্তিত হয়েছে !!', 'অভিনন্দন', ["positionClass" => "toast-bottom-left"]);
             if($loan->status == STATUS_ON) {
                 $loan->status = STATUS_OFF;
@@ -317,8 +280,5 @@ class LoanController extends Controller
             return redirect()->back();
         }
     }
-
-    
-
-    
+ 
 }

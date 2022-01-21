@@ -59,7 +59,7 @@
                     </tr>
                     @empty
                     <tr>
-                      <td colspan="4">আজকের কোনো লেনদেন নেই</td>
+                      <td colspan="4">এ মাসের কোনো লেনদেন নেই</td>
                     </tr>
                     @endforelse
                   
@@ -67,7 +67,7 @@
               </table>
         </div>
 
-        <h4 class="text-start pt-2">আজকের মোট হিসাবঃ ‍<span class="text-primary">{{ isset($total) ? $total : '0' }}</span></h4>
+        <h4 class="text-start pt-2">এ মাসের মোট হিসাবঃ ‍<span class="text-primary">{{ isset($total) ? $total : '0' }}</span></h4>
         
     </div>
 </section>

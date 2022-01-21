@@ -6,7 +6,6 @@ use App\Http\Controllers\LoanController;
 use App\Http\Controllers\HolderController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\WithdrawController;
-use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SelectDateController;
@@ -34,9 +33,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function() {
     // Dashboard;
@@ -44,12 +40,7 @@ Route::middleware(['auth'])->group(function() {
         return view('dashboard');
     })->name('dashboard');
 
-    // User type;
-    // Route::get('/type-of-holder', function() {
-    //     return view('front.selection.holder');
-    // })->name('holder.type');
-
-    // Find user by phone;
+    // Find user by phone or ID;
     Route::get('/find-user-by-phone', function() {
         return view('front.holder.single.find');
     })->name('find.user.by.phone');
@@ -158,7 +149,11 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/search/selection/month/{route}/{month}/{year}', [SearchController::class, 'search_data_by_month'])->name('search.data.by.month');
 
     Route::get('/search/selection/year/{route}', [SearchController::class, 'year'])->name('search.select.year');
+    Route::post('/search/selection/year', [SearchController::class, 'year_store'])->name('search.select.year.store');
+    Route::get('/search/selection/year/{route}/{year}', [SearchController::class, 'search_data_by_year'])->name('search.data.by.year');
 
+    Route::get('/search/selection/total/{route}', [SearchController::class, 'total'])->name('search.select.total');
+    Route::get('/search/selection/total/{route}/get-data', [SearchController::class, 'search_data_by_total'])->name('search.data.by.total');
 
 
 });

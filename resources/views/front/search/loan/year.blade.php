@@ -5,28 +5,9 @@
     <div class="container">
         <div class="profile">
             <div class="title">
-                <h1 class="m-0">মাসিক হিসাবের তালিকা</h1>
+                <h1 class="m-0">বাৎসরিক নগদ জমা হিসাবের তালিকা</h1>
                 <h4 class="m-0 pt-2"><span class="bn-text">
-                  <script>
-                    let months = [
-                                'জানুয়ারী',
-                                'ফেব্রুয়ারী',
-                                'মার্চ',
-                                'এপ্রিল',
-                                'মে',
-                                'জুন',
-                                'জুলাই',
-                                'আগস্ট',
-                                'সেপ্টেম্বর',
-                                'অক্টবর',
-                                'নভেম্বর',
-                                'ডিসেম্বর',
-                            ];
-
-                            let currentMonth = months["{{ $month }}" - 1];
-                  </script>
-                    <script>document.write(currentMonth)</script>
-                  
+                    বছরঃ                  
                   {{ $year }}  
                 </h4>
                 <br>
@@ -47,7 +28,7 @@
                     </tr>
                   </thead>
                 <tbody>
-                    @forelse ($withdraws as $key => $withdraw)
+                    @forelse ($loans as $key => $loan)
                     <tr>
                       @php
                         $holder = DB::table('holders')->where('id', $key)->get();
@@ -55,11 +36,11 @@
                         <td style="width: 60px;">{{ $loop->iteration }}</td>
                         <td style="width: 80px;">{{ $holder[0]->policy }}</td>
                         <td>{{ $holder[0]->name }}</td>
-                        <td>{{ $withdraw->sum('amount') }}</td>
+                        <td>{{ $loan->sum('amount') }}</td>
                     </tr>
                     @empty
                     <tr>
-                      <td colspan="4">এ মাসের কোনো লেনদেন নেই</td>
+                      <td colspan="4">এ বসরের কোনো লেনদেন নেই</td>
                     </tr>
                     @endforelse
                   
@@ -67,7 +48,7 @@
               </table>
         </div>
 
-        <h4 class="text-start pt-2">এ মাসের মোট হিসাবঃ ‍<span class="text-primary">{{ isset($total) ? $total : '0' }}</span></h4>
+        <h4 class="text-start pt-2">এ বসরের মোট হিসাবঃ ‍<span class="text-primary">{{ isset($total) ? $total : '0' }}</span></h4>
         
     </div>
 </section>

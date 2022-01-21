@@ -41,7 +41,5 @@ class SelectDateController extends Controller
             return redirect()->route('ins.select.policy');
         }
 
-
-
     }
 }

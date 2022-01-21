@@ -49,8 +49,6 @@ class InstallmentController extends Controller
 
         if($exist) {
             $ins = $exist;
-
-            
         } else {
             $ins = new Installment();
         }
@@ -59,7 +57,6 @@ class InstallmentController extends Controller
             return redirect()->back()->withErrors(['error' => 'amount greater then due']);
         }
 
-        
         $loan = Loan::where('holder_id', $holder->id)->orderBy('created_at', 'DESC')->firstOrFail();
 
         $ins->holder_id = $request->holder_id;
@@ -69,8 +66,6 @@ class InstallmentController extends Controller
         $ins->year = $year;
         $ins->loan_id = $loan->id;
         $ins->save();
-
-
         
         if( $request->has('old_amount') ) {
             $old_amm = $request->old_amount;
@@ -93,8 +88,6 @@ class InstallmentController extends Controller
 
         return redirect()->route('ins.select.policy');
         
-    }
-
-    
+    } 
 
 }

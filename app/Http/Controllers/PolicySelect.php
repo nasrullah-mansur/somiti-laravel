@@ -13,7 +13,6 @@ class PolicySelect extends Controller
         return view('front.selection.policy', compact('policies'));
     }
 
-
     public function show(Request $request)
     {
 

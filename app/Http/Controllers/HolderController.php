@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use DataTables;
 use App\Models\Holder;
-use App\Models\Deposit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Brian2694\Toastr\Facades\Toastr;
@@ -127,6 +126,7 @@ class HolderController extends Controller
         $holder->joining_date = $joining_date;
         $holder->address = $request->address;
         $holder->phone = trim($request->phone);
+        $holder->id_card = trim($request->id_card);
         $holder->balance = $request->balance;
 
         if($request->hasFile('photo')) {
@@ -165,6 +165,7 @@ class HolderController extends Controller
         $holder->joining_date = $joining_date;
         $holder->address = $request->address;
         $holder->phone = trim($request->phone);
+        $holder->id_card = trim($request->id_card);
         $holder->balance = $request->balance;
 
         if($request->hasFile('photo')) {
@@ -178,7 +179,7 @@ class HolderController extends Controller
     public function delete($id)
     {
         $holder = Holder::where('id', $id)->firstOrFail();
-        // removeImage($holder->photo);
+        
         if($holder->status == STATUS_ON) {
             $holder->status = STATUS_OFF;
         } else {
@@ -187,10 +188,6 @@ class HolderController extends Controller
 
         $holder->save();
 
-        // $deposits = Deposit::where('holder_id', $holder->id)->get();
-        // foreach ($deposits as $deposit) {
-        //     $deposit->delete();
-        // }
         Toastr::success('একাউন্টটির অবস্থা সফলভাবে পরিবর্তিত হয়েছে', 'অভিনন্দন', ["positionClass" => "toast-bottom-left"]);
         return redirect()->route('holder.index');
     }

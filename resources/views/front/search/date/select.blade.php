@@ -19,13 +19,13 @@
                     <h4>মাসিক</h4>
                 </div>
             </a>
-            <a href="{{ route('date.select', 'installment') }}">
+            <a href="{{ route('search.select.year', $route) }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>বাৎসরিক</h4>
                 </div>
             </a>
-            <a href="{{ route('date.select', 'installment') }}">
+            <a href="{{ route('search.select.total', $route) }}">
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>সকল</h4>

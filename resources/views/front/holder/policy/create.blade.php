@@ -23,6 +23,10 @@
                 <input id="mobile" name="phone" type="text" placeholder="সদস্যের মোবাইল নং">
             </div>
             <div class="input-area">
+                <label for="id_card">সদস্যের আই ডি কার্ড নং</label>
+                <input id="id_card" name="id_card" type="number" placeholder="সদস্যের আই ডি কার্ড নং">
+            </div>
+            <div class="input-area">
                 <label for="balance">সদস্যের বর্তমান ব্যালেন্স</label>
                 <input id="balance" name="balance" type="number" placeholder="সদস্যের বর্তমান ব্যালেন্স">
             </div>

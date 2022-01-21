@@ -20,8 +20,9 @@ class CreateHoldersTable extends Migration
             $table->string('joining_date');
             $table->string('address');
             $table->string('photo')->nullable();
-            $table->string('balance')->nullable();
+            $table->integer('balance')->nullable();
             $table->string('phone')->nullable();
+            $table->integer('id_card')->nullable();
             $table->string('status')->default(STATUS_ON);
             $table->timestamps();
         });

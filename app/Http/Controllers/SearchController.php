@@ -127,7 +127,127 @@ class SearchController extends Controller
             $withdraws = $withdraws->get(['amount', 'holder_id'])->groupBy('holder_id');
             return view('front.search.withdraw.month', compact('withdraws', 'total', 'month', 'year'));
         }
+
+        if($route === 'loan') {
+            $loans = Loan::where('month', $month)->where('year', $year);
+            $total = $loans->sum('amount');
+            $loans = $loans->get(['amount', 'holder_id'])->groupBy('holder_id');
+            return view('front.search.loan.month', compact('loans', 'total', 'month', 'year'));
+        }
+
+        if($route === 'installment') {
+            $installments = Installment::where('month', $month)->where('year', $year);
+            $total = $installments->sum('amount');
+            $installments = $installments->get(['amount', 'holder_id'])->groupBy('holder_id');
+            return view('front.search.installment.month', compact('installments', 'total', 'month', 'year'));
+        }
+
+
         
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Search By Year
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    public function year($route)
+    {
+        return view('front.search.date.year', compact('route'));
+    }
+
+    public function year_store(Request $request)
+    {
+        // return $request;
+        $page = $request->page;
+        $year = $request->year;
+
+        return redirect()->route('search.data.by.year', [$page, $year]);
+    }
+
+    public function search_data_by_year($route, $year)
+    {
+        // Deposit inquiry;
+        if($route === 'deposit') {
+            $deposits = Deposit::where('year', $year);
+            $total = $deposits->sum('amount');
+            $deposits = $deposits->get(['amount', 'holder_id'])->groupBy('holder_id');
+            return view('front.search.deposit.year', compact('deposits', 'total', 'year'));
+        }
+
+        // Withdraw inquiry;
+        if($route === 'withdraw') {
+            $withdraws = Deposit::where('year', $year);
+            $total = $withdraws->sum('amount');
+            $withdraws = $withdraws->get(['amount', 'holder_id'])->groupBy('holder_id');
+            return view('front.search.withdraw.year', compact('withdraws', 'total', 'year'));
+        }
+
+        // Loan inquiry;
+        if($route === 'loan') {
+            $loans = Deposit::where('year', $year);
+            $total = $loans->sum('amount');
+            $loans = $loans->get(['amount', 'holder_id'])->groupBy('holder_id');
+            return view('front.search.loan.year', compact('loans', 'total', 'year'));
+        }
+
+        // Installment inquiry;
+        if($route === 'installment') {
+            $installments = Deposit::where('year', $year);
+            $total = $installments->sum('amount');
+            $installments = $installments->get(['amount', 'holder_id'])->groupBy('holder_id');
+            return view('front.search.installment.year', compact('installments', 'total', 'year'));
+        }
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Search By Total
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    public function total($route)
+    {
+        return redirect()->route('search.data.by.total', $route);
+    }
+
+    public function search_data_by_total($route)
+    {
+        // Deposit inquiry;
+        if($route === 'deposit') {
+            $deposits = Deposit::where('amount', '>', '0');
+            $total = $deposits->sum('amount');
+            $deposits = $deposits->get(['amount', 'holder_id'])->groupBy('holder_id');
+            return view('front.search.deposit.all', compact('deposits'));
+        }
+
+        // Withdraw inquiry;
+        if($route === 'withdraw') {
+            $withdraws = Withdraw::where('amount', '>', '0');
+            $total = $withdraws->sum('amount');
+            $withdraws = $withdraws->get(['amount', 'holder_id'])->groupBy('holder_id');
+            return view('front.search.withdraw.all', compact('withdraws'));
+        }
+
+        // Loan inquiry;
+        if($route === 'loan') {
+            $loans = Loan::where('amount', '>', '0');
+            $total = $loans->sum('amount');
+            $loans = $loans->get(['amount', 'holder_id'])->groupBy('holder_id');
+            return view('front.search.loan.all', compact('loans'));
+        }
+
+        // Installment inquiry;
+        if($route === 'installment') {
+            $installments = Installment::where('amount', '>', '0');
+            $total = $installments->sum('amount');
+            $installments = $installments->get(['amount', 'holder_id'])->groupBy('holder_id');
+            return view('front.search.installment.all', compact('installments'));
+        }
     }
 
 }

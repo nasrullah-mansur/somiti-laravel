@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Money;
 use App\Models\Holder;
 use App\Models\Deposit;
 use Illuminate\Http\Request;
@@ -31,7 +30,6 @@ class DepositController extends Controller
 
     public function add_money_create($id)
     {
-        // return Session::all();
         $holder = Holder::where('id', $id)->firstOrFail();
         $deposit = Deposit::where('holder_id', $id)
                         ->where('day', Session::get('today_day'))
@@ -88,8 +86,6 @@ class DepositController extends Controller
         } else {
             $balance->balance = $balance->balance + $request->number;
         }
-
-        // return $balance;
 
         $balance->save();
 
