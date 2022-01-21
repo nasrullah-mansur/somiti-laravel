@@ -83,7 +83,7 @@
             </div>
 
             <div class="btn-area">
-                <input type="text" name="page" value="{{ $page }}">
+                <input type="hidden" name="page" value="{{ $page }}">
                 <button class="btn-primary btn" type="submit">তারিখ সিলেক্ট করুন</button>
             </div>
         </form>

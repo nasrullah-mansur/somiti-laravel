@@ -49,7 +49,7 @@
                     </tr>
                   </thead>
                 <tbody>
-                    @forelse ($loans as $loan)
+                    @foreach ($loans as $loan)
                     <tr>
                         <td style="width: 60px;">{{ $loop->iteration }}</td>
                         <td style="width: 80px;">{{ $loan->holder->policy }}</td>
@@ -57,11 +57,7 @@
                         <td>{{ $loan->amount }}</td>
                         <td>{{ $loan->holder->balance }}</td>
                     </tr>
-                    @empty
-                    <tr>
-                      <td colspan="5">আজকের কোনো লেনদেন নেই</td>
-                    </tr>
-                    @endforelse
+                    @endforeach
                   
                 </tbody>
               </table>

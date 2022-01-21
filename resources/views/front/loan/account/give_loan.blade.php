@@ -129,7 +129,7 @@
                 @endif
             </div>
                 <div class="btn-area text-start">
-                    <input type="text" name="holder_id" value="{{ $holder->id }}">
+                    <input type="hidden" name="holder_id" value="{{ $holder->id }}">
                     <button class="btn-primary btn" type="submit">ঋণ {{ $loan->due ? 'সংশধন' : 'প্রদান' }} করুন</button>
                 </div>
             </form>

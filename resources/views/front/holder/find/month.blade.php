@@ -4,7 +4,7 @@
 <section class="login">
     <div class="container">
         <h1>মাস নির্বাচন করুন</h1>
-        <form method="POST" action="{{ route('search.select.month.store') }}">
+        <form method="POST" action="{{ route('holder.find.data.select.set.month') }}">
             @csrf
             
             <div class="input-area">
@@ -64,7 +64,7 @@
             </div>
 
             <div class="btn-area">
-                <input type="hidden" name="page" value="{{ $route }}">
+                <input type="hidden" name="holder_id" value="{{ $holder->id }}">
                 <button class="btn-primary btn" type="submit">মাস সিলেক্ট করুন</button>
             </div>
         </form>

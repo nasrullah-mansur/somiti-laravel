@@ -5,7 +5,7 @@
     <div class="container">
         <div class="profile">
             <div class="title">
-                <h1 class="m-0">দৈনিক কিস্তি উত্তলনের তালিকা</h1>
+                <h1 class="m-0">দৈনিক কিস্তি কালেকশনের তালিকা</h1>
                 <small>তারিখ - <span class="bn-text">
                   <script>
                     let months = [
@@ -50,7 +50,7 @@
                     </tr>
                   </thead>
                 <tbody>
-                    @forelse ($installments as $installment)
+                    @foreach ($installments as $installment)
                     <tr>
                         <td style="width: 60px;">{{ $loop->iteration }}</td>
                         <td style="width: 80px;">{{ $installment->holder->policy }}</td>
@@ -59,11 +59,7 @@
                         <td>{{ $installment->loan->amount }}</td>
                         <td>{{ $installment->loan->due }}</td>
                     </tr>
-                    @empty
-                    <tr>
-                      <td colspan="5">আজকের কোনো লেনদেন নেই</td>
-                    </tr>
-                    @endforelse
+                    @endforeach
                   
                 </tbody>
               </table>

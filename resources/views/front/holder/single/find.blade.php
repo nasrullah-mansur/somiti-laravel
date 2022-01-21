@@ -12,7 +12,7 @@
             <form method="POST" action="{{ route('holder.show.policy') }}">
                 @csrf
                 <div class="input-area">
-                    <input id="name" type="text" name="phone" placeholder="সদস্যের মোবাইল নং">
+                    <input id="name" type="text" name="phone" placeholder="সদস্যের মোবাইল / আই ডি কার্ড নং">
                     @if($errors->any())
                     <small>কোনো সদস্যকে খুঁজে পাওয়া যায়নি</small>
                     @endif

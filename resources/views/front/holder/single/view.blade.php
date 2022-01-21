@@ -53,32 +53,25 @@
               </table>
         </div>
         <div class="user-address">
-            <h5 class="text-start mt-3">লেনদেন বিবরণ</h5>
-            <table class="table table-striped table-bordered custom-width">
+            <h5 class="text-start mt-3">ঋণের বিবরণ</h5>
+            <table class="table table-striped table-bordered text-start">
                 <tbody>
                   <tr>
-                    <td>গড় দৈনিক জমা</td>
-                    <td>১১-মিরপুর ঢাকা</td>
+                    <td>গ্রাহকের একটিভ ঋণ</td>
+                    <td>{{ $active_loan ? $active_loan->amount : DEFAULT_BLANK_DATA }}</td>
                   </tr>
                   <tr>
-                    <td>সর্বচ্য দৈনিক জমা</td>
-                    <td>০৮-১২-১৯৯৫</td>
+                    <td>গ্রাহকের বাকি কিস্তির পরিমাণ</td>
+                    <td>{{ $active_loan ? $active_loan->due : DEFAULT_BLANK_DATA }}</td>
                   </tr>
                   <tr>
-                    <td>সর্বনিম্ন দৈনিক জমা</td>
-                    <td>০১৭২৮৬১৯৭৩৩</td>
+                    <td>গ্রাহকের সর্বমোট গৃহীত ঋণ</td>
+                    <td>{{ $all_loan ? $all_loan->sum('amount') :  DEFAULT_BLANK_DATA}}</td>
                   </tr>
-                  <tr>
-                    <td>সর্বশেষ গৃহীত ঋণ</td>
-                    <td>০১৭২৮৬১৯৭৩৩</td>
-                  </tr>
-                  <tr>
-                    <td>সর্বমোট গৃহীত ঋণ</td>
-                    <td>০১৭২৮৬১৯৭৩৩</td>
-                  </tr>
-                  
                 </tbody>
               </table>
+
+              <a class="btn btn-primary" href="{{ route('holder.find.data.select.month', $holder->id) }}">মাসিক ডাটা চেক করুন</a>
         </div>
     </div>
 </section>

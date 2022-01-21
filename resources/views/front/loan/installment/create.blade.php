@@ -80,9 +80,9 @@
 
                     <div id="submit-area" class="submit-area {{ $exist ? 'd-none' : '' }}">
                         <button class="btn-primary btn" type="submit">কিস্তি {{ $exist ? 'এডিট' : 'জমা' }}  করুন</button>
-                        <input type="text" name="holder_id" value="{{ $holder->id }}">
+                        <input type="hidden" name="holder_id" value="{{ $holder->id }}">
                         @if ($exist)
-                            <input type="text" name="old_amount" value="{{ $exist->amount }}">
+                            <input type="hidden" name="old_amount" value="{{ $exist->amount }}">
                         @endif
                     </div>
                 </div>

@@ -31,13 +31,13 @@
         <div class="items">
             <a href="{{ route('date.select', 'withdraw') }}">
                 <div class="item">
-                    <img src="{{ asset('front/images/icon-3.png') }}" alt="img">
+                    <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>নগদ প্রদান</h4>
                 </div>
             </a>
             <a href="{{ route('date.select', 'loan') }}">
                 <div class="item">
-                    <img src="{{ asset('front/images/icon-4.png') }}" alt="img">
+                    <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>ঋণ প্রদান</h4>
                 </div>
             </a>
@@ -96,25 +96,25 @@
             </a>
             <a href="{{ route('holder.create') }}">
                 <div class="item">
-                    <img src="{{ asset('front/images/icon-2.png') }}" alt="img">
+                    <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>নতুন সদস্য গ্রহণ</h4>
                 </div>
             </a>
             <a href="{{ route('loan.account.create') }}">
                 <div class="item">
-                    <img src="{{ asset('front/images/icon-3.png') }}" alt="img">
+                    <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>ঋণ একাউন্ট তৈরী</h4>
                 </div>
             </a>
             <a href="{{ route('loan.index') }}">
                 <div class="item">
-                    <img src="{{ asset('front/images/icon-4.png') }}" alt="img">
+                    <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>সকল ঋণ একাউন্ট</h4>
                 </div>
             </a>
             <a href="{{ route('find.user.by.phone') }}">
                 <div class="item">
-                    <img src="{{ asset('front/images/icon-4.png') }}" alt="img">
+                    <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>সদস্য খুঁজুন</h4>
                 </div>
             </a>

@@ -24,11 +24,11 @@
                       <th scope="col" style="width: 60px;">#</th>
                       <th scope="col" style="width: 80px;">পলিসি নং</th>
                       <th scope="col">নাম</th>
-                      <th scope="col">মেট জমা</th>
+                      <th scope="col">পরিমাণ</th>
                     </tr>
                   </thead>
                 <tbody>
-                    @forelse ($installments as $key => $installment)
+                    @foreach ($installments as $key => $installment)
                     <tr>
                       @php
                         $holder = DB::table('holders')->where('id', $key)->get();
@@ -38,11 +38,7 @@
                         <td>{{ $holder[0]->name }}</td>
                         <td>{{ $installment->sum('amount') }}</td>
                     </tr>
-                    @empty
-                    <tr>
-                      <td colspan="4">এ বসরের কোনো লেনদেন নেই</td>
-                    </tr>
-                    @endforelse
+                    @endforeach
                   
                 </tbody>
               </table>

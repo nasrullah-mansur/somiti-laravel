@@ -47,18 +47,14 @@
                     </tr>
                   </thead>
                 <tbody>
-                    @forelse ($deposits as $deposit)
+                    @foreach ($deposits as $deposit)
                     <tr>
                         <td style="width: 60px;">{{ $loop->iteration }}</td>
                         <td style="width: 80px;">{{ $deposit->holder->policy }}</td>
                         <td>{{ $deposit->holder->name }}</td>
                         <td>{{ $deposit->amount }}</td>
                     </tr>
-                    @empty
-                    <tr>
-                      <td colspan="4">আজকের কোনো লেনদেন নেই</td>
-                    </tr>
-                    @endforelse
+                    @endforeach
                   
                 </tbody>
               </table>

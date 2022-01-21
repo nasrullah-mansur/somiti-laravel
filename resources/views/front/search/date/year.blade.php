@@ -28,7 +28,7 @@
             </div>
 
             <div class="btn-area">
-                <input type="text" name="page" value="{{ $route }}">
+                <input type="hidden" name="page" value="{{ $route }}">
                 <button class="btn-primary btn" type="submit">বছর সিলেক্ট করুন</button>
             </div>
         </form>

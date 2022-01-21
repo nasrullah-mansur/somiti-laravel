@@ -31,7 +31,7 @@ class PolicySelect extends Controller
                 'phone'=> 'required',
             ]);
 
-            $check_id = Holder::where('phone', $request->phone)->first();
+            $check_id = Holder::where('phone', $request->phone)->orWhere('id_card', $request->phone)->first();
 
             if(!$check_id) {
                 return redirect()->back()->withErrors(['not_exist' => ['this phone no not exist.']]);

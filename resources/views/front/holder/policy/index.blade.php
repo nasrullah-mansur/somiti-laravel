@@ -16,6 +16,7 @@
                           <th scope="col">পলিসি নং</th>
                           <th scope="col">ছবি</th>
                           <th scope="col">নাম</th>
+                          <th scope="col">মোবাইল নং</th>
                           <th scope="col">ভর্তির তারিখ</th>
                           <th scope="col">ঠিকানা</th>
                           <th scope="col">ব্যালেন্স</th>
@@ -49,6 +50,7 @@
               {data: 'policy', name: 'policy'},
               {data: 'photo', name: 'photo'},
               {data: 'name', name: 'name'},
+              {data: 'phone', name: 'phone'},
               {data: 'joining_date', name: 'joining_date'},
               {data: 'address', name: 'address'},
               {data: 'balance', name: 'balance'},

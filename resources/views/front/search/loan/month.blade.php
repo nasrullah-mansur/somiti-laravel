@@ -43,11 +43,11 @@
                       <th scope="col" style="width: 60px;">#</th>
                       <th scope="col" style="width: 80px;">পলিসি নং</th>
                       <th scope="col">নাম</th>
-                      <th scope="col">মেট প্রদত্ত ঋণ</th>
+                      <th scope="col">পরিমাণ</th>
                     </tr>
                   </thead>
                 <tbody>
-                    @forelse ($loans as $key => $loan)
+                    @foreach ($loans as $key => $loan)
                     <tr>
                       @php
                         $holder = DB::table('holders')->where('id', $key)->get();
@@ -57,11 +57,7 @@
                         <td>{{ $holder[0]->name }}</td>
                         <td>{{ $loan->sum('amount') }}</td>
                     </tr>
-                    @empty
-                    <tr>
-                      <td colspan="4">এ মাসে কোনো লেনদেন নেই</td>
-                    </tr>
-                    @endforelse
+                    @endforeach
                   
                 </tbody>
               </table>

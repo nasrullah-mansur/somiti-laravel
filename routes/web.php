@@ -4,11 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PolicySelect;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\HolderController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\WithdrawController;
-use App\Http\Controllers\InstallmentController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SelectDateController;
+use App\Http\Controllers\InstallmentController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,13 @@ use App\Http\Controllers\SelectDateController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('dashboard');
+});
+
+// Login;
+Route::middleware('guest')->group(function() {
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 });
 
 
@@ -39,6 +46,9 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/dashboard', function() {
         return view('dashboard');
     })->name('dashboard');
+
+    // Logout;
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     // Find user by phone or ID;
     Route::get('/find-user-by-phone', function() {
@@ -70,6 +80,11 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/holder/delete/{id}', [HolderController::class, 'delete'])->name('holder.delete');
 
     Route::get('/policy/holder/{id}', [HolderController::class, 'show'])->name('holder.show');
+
+    // Holder find data;
+    Route::get('/holder/data/find/select/{id}/month', [HolderController::class, 'select_month'])->name('holder.find.data.select.month');
+    Route::post('/holder/data/find/select/month', [HolderController::class, 'select_month_set'])->name('holder.find.data.select.set.month');
+    Route::get('/holder/data/find/select/{month}/{year}/{id}', [HolderController::class, 'get_monthly_data'])->name('holder.get.monthly.data');
 
 
     /*
@@ -158,4 +173,3 @@ Route::middleware(['auth'])->group(function() {
 
 });
 
-require __DIR__.'/auth.php';

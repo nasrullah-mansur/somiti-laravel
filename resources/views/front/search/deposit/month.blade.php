@@ -5,7 +5,7 @@
     <div class="container">
         <div class="profile">
             <div class="title">
-                <h1 class="m-0">মাসিক হিসাবের তালিকা</h1>
+                <h1 class="m-0">মাসিক নগদ কালেকশনের তালিকা</h1>
                 <h4 class="m-0 pt-2"><span class="bn-text">
                   <script>
                     let months = [
@@ -47,7 +47,7 @@
                     </tr>
                   </thead>
                 <tbody>
-                    @forelse ($deposits as $key => $deposit)
+                    @foreach ($deposits as $key => $deposit)
                     <tr>
                       @php
                         $holder = DB::table('holders')->where('id', $key)->get();
@@ -57,11 +57,7 @@
                         <td>{{ $holder[0]->name }}</td>
                         <td>{{ $deposit->sum('amount') }}</td>
                     </tr>
-                    @empty
-                    <tr>
-                      <td colspan="4">এ মাসের কোনো লেনদেন নেই</td>
-                    </tr>
-                    @endforelse
+                    @endforeach
                   
                 </tbody>
               </table>

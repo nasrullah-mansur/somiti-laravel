@@ -21,7 +21,7 @@
                         'ডিসেম্বর',
                     ]
             </script>
-            <p class="bn-text m-0"><script>document.write(months[{{ Session::get('today_month') }}])</script>-{{ Session::get('today_day') }}-{{ Session::get('today_year') }}</p>
+            <p class="bn-text m-0"><script>document.write(months[{{ Session::get('today_month') - 1 }}])</script>-{{ Session::get('today_day') }}-{{ Session::get('today_year') }}</p>
         </div>
 
         <div class="today py-2 px-5 mb-5 d-inline-block">

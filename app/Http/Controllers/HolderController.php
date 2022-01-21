@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use DataTables;
+use App\Models\Loan;
 use App\Models\Holder;
+use App\Models\Deposit;
+use App\Models\Installment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Brian2694\Toastr\Facades\Toastr;
@@ -192,11 +195,62 @@ class HolderController extends Controller
         return redirect()->route('holder.index');
     }
 
-    
-
     public function show($id)
     {
+        $active_loan_exist = Loan::where('holder_id', $id)->where('due', '!=', '0')->first();
+        if($active_loan_exist) {
+            $active_loan = $active_loan_exist;
+        } else {
+            $active_loan = false;
+        }
+
+        $all_loan_exist = Loan::where('holder_id', $id)->get();
+        if($all_loan_exist->count() > 0) {
+            $all_loan = $all_loan_exist;
+        } else {
+            $all_loan = false;
+        }
+
         $holder = Holder::where('id', $id)->firstOrFail();
-        return view('front.holder.single.view', compact('holder'));
+        return view('front.holder.single.view', compact('holder', 'active_loan', 'all_loan'));
     }
+
+
+    /*
+        ===================== Holder data find ============
+    */
+
+    public function select_month($id)
+    {
+        $holder = Holder::where('id', $id)->firstOrFail();
+        return view('front.holder.find.month', compact('holder'));
+    }
+
+    public function select_month_set(Request $request)
+    {
+        $request->validate([
+            'month' => 'required',
+            'year' => 'required',
+            'holder_id' => 'required',
+        ]);
+
+        $month = $request->month;
+        $year = $request->year;
+        $holder_id = $request->holder_id;
+
+        return redirect()->route('holder.get.monthly.data', [$month, $year, $holder_id]);
+    }
+
+    public function get_monthly_data($month, $year, $holder_id)
+    {
+        $holder = Holder::where('id', $holder_id)->firstOrFail();
+
+        $installments = Installment::where('holder_id', $holder_id)->where('month', $month)->where('year', $year)->orderBy('day')->get();
+    
+        $deposits = Deposit::where('holder_id', $holder_id)->where('month', $month)->where('year', $year)->orderBy('day')->get();
+
+        return view('front.holder.find.view', compact('installments', 'deposits', 'holder', 'month', 'year'));
+    }
+
+
 }

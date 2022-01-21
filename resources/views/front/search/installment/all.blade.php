@@ -5,7 +5,7 @@
     <div class="container">
         <div class="profile">
             <div class="title">
-                <h1 class="m-0">বাৎসরিক নগদ জমা হিসাবের তালিকা</h1>
+                <h1 class="m-0">বাৎসরিক কিস্তি কালেকশনের তালিকা</h1>
                 <br>
                 <a href="#" class="btn btn-primary">পি ডি এফ ডাউনলোড</a>
                 <br>
@@ -20,11 +20,11 @@
                       <th scope="col" style="width: 60px;">#</th>
                       <th scope="col" style="width: 80px;">পলিসি নং</th>
                       <th scope="col">নাম</th>
-                      <th scope="col">মেট জমা</th>
+                      <th scope="col">পরিমাণ</th>
                     </tr>
                   </thead>
                 <tbody>
-                    @forelse ($installments as $key => $installment)
+                    @foreach ($installments as $key => $installment)
                     <tr>
                       @php
                         $holder = DB::table('holders')->where('id', $key)->get();
@@ -34,11 +34,7 @@
                         <td>{{ $holder[0]->name }}</td>
                         <td>{{ $installment->sum('amount') }}</td>
                     </tr>
-                    @empty
-                    <tr>
-                      <td colspan="4">এ বসরের কোনো লেনদেন নেই</td>
-                    </tr>
-                    @endforelse
+                    @endforeach
                   
                 </tbody>
               </table>

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="profile">
             <div class="title">
-                <h1 class="m-0">দৈনিক উত্তলনের তালিকা</h1>
+                <h1 class="m-0">দৈনিক নগদ প্রদানের তালিকা</h1>
                 <small>তারিখ - <span class="bn-text">
                   <script>
                     let months = [
@@ -49,7 +49,7 @@
                     </tr>
                   </thead>
                 <tbody>
-                    @forelse ($withdraws as $withdraw)
+                    @foreach ($withdraws as $withdraw)
                     <tr>
                         <td style="width: 60px;">{{ $loop->iteration }}</td>
                         <td style="width: 80px;">{{ $withdraw->holder->policy }}</td>
@@ -57,11 +57,7 @@
                         <td>{{ $withdraw->amount }}</td>
                         <td>{{ $withdraw->holder->balance }}</td>
                     </tr>
-                    @empty
-                    <tr>
-                      <td colspan="5">আজকের কোনো লেনদেন নেই</td>
-                    </tr>
-                    @endforelse
+                    @endforeach
                   
                 </tbody>
               </table>
