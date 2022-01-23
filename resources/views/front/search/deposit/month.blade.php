@@ -30,7 +30,7 @@
                   {{ $year }}  
                 </h4>
                 <br>
-                <a href="#" class="btn btn-primary">পি ডি এফ ডাউনলোড</a>
+                <a href="{{ route('pdf.by.month', ['deposit', $month, $year]) }}" target="_blank" class="btn btn-primary">পি ডি এফ ডাউনলোড</a>
                 <br>
                 <br>
             </div>
@@ -63,7 +63,7 @@
               </table>
         </div>
 
-        <h4 class="text-start pt-2">এ মাসের মোট হিসাবঃ ‍<span class="text-primary">{{ isset($total) ? $total : '0' }}</span></h4>
+        <h4 class="text-start pt-2">এ মাসের মোট হিসাবঃ <span class="text-primary">{{ isset($total) ? $total : '0' }}</span></h4>
         
     </div>
 </section>

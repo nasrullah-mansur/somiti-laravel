@@ -30,7 +30,7 @@
                   {{ $year }}  
                 </h4>
                 <br>
-                <a href="#" class="btn btn-primary">পি ডি এফ ডাউনলোড</a>
+                <a href="{{ route('pdf.by.day', ['deposit', $day, $month, $year]) }}" target="_blank" class="btn btn-primary">পি ডি এফ ডাউনলোড</a>
                 <br>
                 <br>
             </div>

@@ -59,7 +59,7 @@
                   @endforelse
                 </tbody>
               </table>
-              <h4>সর্বমোট নগদ জমাঃ {{ $deposit->sum('amount') }}</h4>
+              <h4>সর্বমোট নগদ জমাঃ {{ $deposits ? $deposits->sum('amount') : '0'}}</h4>
         </div>
         
         <div class="user-address pt-4">
@@ -85,7 +85,7 @@
                 </tbody>
               </table>
 
-              <h4>সর্বমোট কিস্তি জমাঃ {{ $installments->sum('amount') }}</h4>
+              <h4>সর্বমোট কিস্তি জমাঃ {{ $installments ? $installments->sum('amount') : '0' }}</h4>
         </div>
 
     </div>

@@ -11,7 +11,7 @@
                   {{ $year }}  
                 </h4>
                 <br>
-                <a href="#" class="btn btn-primary">পি ডি এফ ডাউনলোড</a>
+                <a href="{{ route('pdf.by.year', ['installment', $year]) }}" target="_blank" class="btn btn-primary">পি ডি এফ ডাউনলোড</a>
                 <br>
                 <br>
             </div>

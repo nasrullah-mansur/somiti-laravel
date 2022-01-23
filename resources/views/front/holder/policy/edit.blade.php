@@ -23,6 +23,10 @@
                 <input id="mobile" name="phone" type="text" placeholder="সদস্যের মোবাইল নং" value="{{ $holder->phone }}">
             </div>
             <div class="input-area">
+                <label for="id_card">সদস্যের আই ডি কার্ড নং</label>
+                <input id="id_card" name="id_card" type="number" placeholder="সদস্যের আই ডি কার্ড নং" value="{{ $holder->id_card }}">
+            </div>
+            <div class="input-area">
                 <label for="balance">সদস্যের বর্তমান ব্যালেন্স</label>
                 <input id="balance" name="balance" type="number" placeholder="সদস্যের বর্তমান ব্যালেন্স" value="{{ $holder->balance }}">
                 
@@ -170,6 +174,7 @@
                 myForm.find('input, textarea').children('small').hide();
             },
             error: function(error) {
+                console.log(error);
                 let errors = error.responseJSON.errors;
                 function errorTag(massage) {
                     return `<small>${massage}</small>`;

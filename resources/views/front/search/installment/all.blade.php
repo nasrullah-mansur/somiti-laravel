@@ -5,9 +5,9 @@
     <div class="container">
         <div class="profile">
             <div class="title">
-                <h1 class="m-0">বাৎসরিক কিস্তি কালেকশনের তালিকা</h1>
+                <h1 class="m-0">সকল কিস্তি কালেকশনের তালিকা</h1>
                 <br>
-                <a href="#" class="btn btn-primary">পি ডি এফ ডাউনলোড</a>
+                <a href="{{ route('pdf.by.total', 'installment') }}" target="_blank" class="btn btn-primary">পি ডি এফ ডাউনলোড</a>
                 <br>
                 <br>
             </div>
@@ -38,6 +38,8 @@
                   
                 </tbody>
               </table>
+
+              <h4 class="text-start pt-2">সর্বমোট হিসাবঃ ‍<span class="text-primary">{{ isset($total) ? $total : '0' }}</span></h4>
         </div>
         
     </div>

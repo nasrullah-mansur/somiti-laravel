@@ -22,7 +22,7 @@ class CreateHoldersTable extends Migration
             $table->string('photo')->nullable();
             $table->integer('balance')->nullable();
             $table->string('phone')->nullable();
-            $table->integer('id_card')->nullable();
+            $table->string('id_card')->nullable();
             $table->string('status')->default(STATUS_ON);
             $table->timestamps();
         });

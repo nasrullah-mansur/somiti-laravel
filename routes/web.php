@@ -10,6 +10,7 @@ use App\Http\Controllers\WithdrawController;
 use App\Http\Controllers\SelectDateController;
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\PdfDownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -170,6 +171,20 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/search/selection/total/{route}', [SearchController::class, 'total'])->name('search.select.total');
     Route::get('/search/selection/total/{route}/get-data', [SearchController::class, 'search_data_by_total'])->name('search.data.by.total');
 
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | PDF Download;
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    Route::get('/pdf/by-day/{route}/{day}/{month}/{year}', [PdfDownloadController::class, 'by_day'])->name('pdf.by.day');
+    Route::get('/pdf/by-month/{route}/{month}/{year}', [PdfDownloadController::class, 'by_month'])->name('pdf.by.month');
+    Route::get('/pdf/by-year/{route}/{year}', [PdfDownloadController::class, 'by_year'])->name('pdf.by.year');
+    Route::get('/pdf/by-total/{route}', [PdfDownloadController::class, 'by_total'])->name('pdf.by.total');
+    
 
 });
 

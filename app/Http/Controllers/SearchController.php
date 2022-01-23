@@ -222,7 +222,7 @@ class SearchController extends Controller
             $deposits = Deposit::where('amount', '>', '0');
             $total = $deposits->sum('amount');
             $deposits = $deposits->get(['amount', 'holder_id'])->groupBy('holder_id');
-            return view('front.search.deposit.all', compact('deposits'));
+            return view('front.search.deposit.all', compact('deposits', 'total'));
         }
 
         // Withdraw inquiry;
@@ -230,7 +230,7 @@ class SearchController extends Controller
             $withdraws = Withdraw::where('amount', '>', '0');
             $total = $withdraws->sum('amount');
             $withdraws = $withdraws->get(['amount', 'holder_id'])->groupBy('holder_id');
-            return view('front.search.withdraw.all', compact('withdraws'));
+            return view('front.search.withdraw.all', compact('withdraws', 'total'));
         }
 
         // Loan inquiry;
@@ -238,7 +238,7 @@ class SearchController extends Controller
             $loans = Loan::where('amount', '>', '0');
             $total = $loans->sum('amount');
             $loans = $loans->get(['amount', 'holder_id'])->groupBy('holder_id');
-            return view('front.search.loan.all', compact('loans'));
+            return view('front.search.loan.all', compact('loans', 'total'));
         }
 
         // Installment inquiry;
@@ -246,7 +246,7 @@ class SearchController extends Controller
             $installments = Installment::where('amount', '>', '0');
             $total = $installments->sum('amount');
             $installments = $installments->get(['amount', 'holder_id'])->groupBy('holder_id');
-            return view('front.search.installment.all', compact('installments'));
+            return view('front.search.installment.all', compact('installments', 'total'));
         }
     }
 

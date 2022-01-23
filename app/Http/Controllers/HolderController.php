@@ -156,6 +156,7 @@ class HolderController extends Controller
             'year' => 'required',
             'address' => 'required',
             'phone' => 'required',
+            'id_card' => 'nullable',
         ]);
 
         $year = $request->year;
