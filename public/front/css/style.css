@@ -1,4 +1,15 @@
-@import url("https://fonts.maateen.me/solaiman-lipi/font.css");
+@font-face {
+  font-family: 'SolaimanLipi';
+  src: url('../font/');
+  src: url('../font/SolaimanLipi.woff') format('woff'),
+       url('../font/SolaimanLipi.ttf') format('truetype'),
+       url('../font/SolaimanLipi.svg#SolaimanLipiNormal') format('svg'),
+       url('../font/?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 * {
   padding: 0;
   margin: 0;
@@ -773,4 +784,11 @@ th {
 
 .all-users {
   padding: 90px 0;
+}
+
+
+#toast-container {
+  font-family: "SolaimanLipi", sans-serif !important;
+  font-size: 16px;
+  white-space: nowrap;
 }

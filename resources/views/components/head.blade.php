@@ -6,11 +6,11 @@
 <link rel="stylesheet" href="{{ asset('front/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('front/css/all.min.css') }}">
 <link rel="stylesheet" href="{{ asset('front/css/select-2.css') }}">
-<link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-<link rel="icon" href="favicon.ico" type="{{ asset('front/images/favicon.png') }}" />
+<link rel="stylesheet" href="{{ asset('front/css/datatable.min.css') }}">
+<link rel="stylesheet" href="{{ asset('front/css/datatable.bt4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('front/css/toastr.min.css') }}">
+
+<link rel="icon" type="image/x-icon" href="{{ asset('front/images/favicon.png') }}">
 <!-- Main CSS -->
 <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">

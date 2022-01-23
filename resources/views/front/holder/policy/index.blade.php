@@ -5,7 +5,7 @@
     <div class="container">
         <div class="text-center pb-3">
             <h1 class="pb-3">সদস্যগণের বিবরণ</h1>
-            <a href="#" class="btn btn-primary">পি ডি এফ ডাউনলোড</a>
+            <a href="{{ route('pdf.all.policy.holder') }}" target="_blank" class="btn btn-primary">পি ডি এফ ডাউনলোড</a>
         </div>
         <div class="user-address pt-3">
             <div class="table-responsive">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Loan;
 
 use App\Models\Deposit;
+use App\Models\Holder;
 use App\Models\Withdraw;
 use App\Models\Installment;
 use Illuminate\Http\Request;
@@ -194,5 +195,25 @@ class PdfDownloadController extends Controller
             $installments = $installments->get(['amount', 'holder_id'])->groupBy('holder_id');
             return view('pdf.total.installment', compact('installments', 'total'));
         }
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Another download;
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    public function all_policy_holder()
+    {
+        $holders = Holder::orderBy('policy')->get();
+        return view('pdf.other.all_policy_holder', compact('holders'));
+    }
+
+    public function active_loan()
+    {
+        $loans = Loan::where('status', STATUS_ON)->with('holder')->get();
+        return view('pdf.other.active_loan', compact('loans'));
     }
 }

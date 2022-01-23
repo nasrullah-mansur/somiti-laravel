@@ -195,10 +195,14 @@ Route::middleware(['auth'])->group(function() {
     |
     */
 
-    Route::get('/pdf/by-day/{route}/{day}/{month}/{year}', [PdfDownloadController::class, 'by_day'])->name('pdf.by.day');
-    Route::get('/pdf/by-month/{route}/{month}/{year}', [PdfDownloadController::class, 'by_month'])->name('pdf.by.month');
-    Route::get('/pdf/by-year/{route}/{year}', [PdfDownloadController::class, 'by_year'])->name('pdf.by.year');
-    Route::get('/pdf/by-total/{route}', [PdfDownloadController::class, 'by_total'])->name('pdf.by.total');
+    Route::middleware(['admin'])->group(function() {
+        Route::get('/pdf/by-day/{route}/{day}/{month}/{year}', [PdfDownloadController::class, 'by_day'])->name('pdf.by.day');
+        Route::get('/pdf/by-month/{route}/{month}/{year}', [PdfDownloadController::class, 'by_month'])->name('pdf.by.month');
+        Route::get('/pdf/by-year/{route}/{year}', [PdfDownloadController::class, 'by_year'])->name('pdf.by.year');
+        Route::get('/pdf/by-total/{route}', [PdfDownloadController::class, 'by_total'])->name('pdf.by.total');
+        Route::get('/pdf/all-policy-holder',[PdfDownloadController::class, 'all_policy_holder'])->name('pdf.all.policy.holder');
+        Route::get('/pdf/active-loan',[PdfDownloadController::class, 'active_loan'])->name('pdf.active.loan');
+    });
     
 
 
