@@ -10,6 +10,8 @@ const DEFAULT_BLANK_DATA = 'প্রযজ্য নয়';
 const STATUS_ON = 'on';
 const STATUS_OFF = 'off';
 const START_YEAR = 2010;
+const MANAGER_ROLE ='manager';
+const ADMIN_ROLE = 'admin';
 
 
 

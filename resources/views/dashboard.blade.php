@@ -3,6 +3,7 @@
 
 @section('content')
 <section class="categories">
+    <!-- Section -->
     <div class="container">
         <div class="title">
             <h2>নগদ গ্রহণ</h2>
@@ -24,6 +25,7 @@
         </div>
     </div>
 
+    <!-- Section -->
     <div class="container">
         <div class="title">
             <h2>নগদ প্রদান</h2>
@@ -44,6 +46,7 @@
         </div>
     </div>
 
+    <!-- Section -->
     <div class="container">
         <div class="title">
             <h2>হিসাব অনুসন্ধান</h2>
@@ -77,6 +80,7 @@
         </div>
     </div>
 
+    <!-- Section -->
     <div class="container">
         <div class="title">
             <h2>সদস্যগণ</h2>
@@ -116,6 +120,27 @@
                 <div class="item">
                     <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
                     <h4>সদস্য খুঁজুন</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Section -->
+    <div class="container">
+        <div class="title">
+            <h2>অন্যন্য</h2>
+        </div>
+        <div class="items">
+            <a href="{{ route('user.change.password') }}">
+                <div class="item">
+                    <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
+                    <h4>আমার একাউন্ট</h4>
+                </div>
+            </a>
+            <a href="{{ route('user.manager.index') }}">
+                <div class="item">
+                    <img src="{{ asset('front/images/icon-1.png') }}" alt="img">
+                    <h4>ম্যানেজার</h4>
                 </div>
             </a>
         </div>

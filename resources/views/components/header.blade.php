@@ -7,7 +7,7 @@
             <div class="reg">
                 <form method="POST" action="{{ route('logout') }}" class="d-flex align-items-center">
                     @csrf
-                    <p class="m-0">রেজিঃ নং - ২০০০২</p>
+                    <p class="m-0">{{ Auth::user()->name }}</p>
                     <button class="btn bg-danger text-white btn-sm ms-2">লগ আউট</button>
                 </form>
             </div>

@@ -45,6 +45,10 @@
                     <td>{{ $holder->phone }}</td>
                   </tr>
                   <tr>
+                    <td>আই ডি কার্ড নং</td>
+                    <td>{{ $holder->id_card }}</td>
+                  </tr>
+                  <tr>
                     <td>ব্যলেন্স</td>
                     <td>{{ $holder->balance }}</td>
                   </tr>

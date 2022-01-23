@@ -188,7 +188,7 @@ ul {
 }
 
 .btn i {
-  padding-right: 8px;
+  padding-right: 4px;
 }
 
 .btn:focus, .btn:active {
@@ -201,7 +201,7 @@ ul {
 .btn.btn-sm {
   height: 30px;
   line-height: 30px;
-  padding: 0 15px;
+  padding: 0 8px;
   font-size: 14px;
 }
 
@@ -445,7 +445,7 @@ input[type=number] {
 .input-area i {
   position: absolute;
   right: 10px;
-  bottom: 14px;
+  top: 40px;
   z-index: 1;
   cursor: pointer;
 }
